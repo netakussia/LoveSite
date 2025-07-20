@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Для тебя ❤️</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+  <!-- Экран загрузки -->
+  <div id="preloader">
+    <p>Загрузка любви...</p>
+  </div>
+
+  <!-- Главный экран / Приветствие -->
+  <header id="hero">
+    <h1>С 3 месяцами нас, любовь ❤️</h1>
+    <p>Этот сайт только для тебя...</p>
+  </header>
+
+  <!-- Счётчик дней -->
+  <section id="counter">
+    <h2>Мы вместе уже:</h2>
+    <div id="daysCounter">0 дней</div>
+  </section>
+  <!-- Лента времени -->
+  <section id="timeline">
+    <h2>Наша история</h2>
+    <div class="timeline-item">1 месяц — первая фотка вместе 📸</div>
+    <div class="timeline-item">2 месяц — наш поцелуй на остановке 😘</div>
+    <!-- и т.д. -->
+  </section>
+
+  <!-- Галерея воспоминаний -->
+  <section id="gallery">
+    <h2>Моменты</h2>
+    <div class="slider">
+      <!-- Фото с подписями -->
+      <img src="images/photo1.jpg" alt="Мы вдвоем" />
+      <!-- и т.д. -->
+    </div>
+  </section>
+
+  <!-- “Свиток любви” (тексты и признания) -->
+  <section id="love-scroll">
+    <h2>Что я чувствую</h2>
+    <div class="love-text">Ты — лучшее, что случалось со мной...</div>
+    <!-- ещё блоки -->
+  </section>
+
+  <!-- Симуляция чата -->
+  <section id="chat">
+    <h2>Наш чат</h2>
+    <div class="message you">Приветик 🥺</div>
+    <div class="message me">Привет, солнце ❤️</div>
+    <!-- и т.д. -->
+  </section>
+
+  <!-- "Подарок" -->
+  <section id="gift">
+    <h2>Открой это 🎁</h2>
+    <button id="openGift">Открыть</button>
+    <div id="giftContent" style="display: none;">
+      <p>Сюрприз! 😍</p>
+    </div>
+  </section>
+
+  <!-- Секретный раздел с паролем -->
+  <section id="secret-letter">
+    <h2>Личное сообщение</h2>
+    <div id="lock">
+      <input type="password" id="password" placeholder="Введи пароль">
+      <button id="check">Открыть</button>
+    </div>
+    <div id="secret" style="display: none;">
+      <p>Тут будет запароленное послание 💌</p>
+    </div>
+  </section>
+
+  <!-- Кнопка включения музыки -->
+  <audio id="bgMusic" src="music/your-song.mp3" loop></audio>
+  <button id="playMusic">🎵</button>
+
+  <!-- Анимация сердечек -->
+  <canvas id="hearts"></canvas>
+
+</body>
+</html>
