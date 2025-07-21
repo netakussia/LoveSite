@@ -8,83 +8,124 @@
   <script defer src="script.js"></script>
 </head>
 <body>
+  <button id="theme-toggle" title="Переключить тему" aria-label="Переключить тему">🌙</button>
 
-  <!-- Экран загрузки -->
-  <div id="preloader">
-    <p>Загрузка любви...</p>
+<!-- ЭКРАН ЗАГРУЗКИ -->
+<div id="preloader">
+  <div class="loader-text" id="loaderText">Загрузка любви...</div>
+</div>
+
+<!-- Главный экран / Приветствие -->
+<header id="hero">
+  <h1>С 3 месяцами нас, любимая ❤️</h1>
+  <p>Этот сайт только для тебя...</p>
+</header>
+<canvas id="hearts-canvas"></canvas>
+
+<!-- Счётчик дней -->
+<section class="counter-section">
+  <h2>Мы вместе уже</h2>
+  <div class="day-counter" id="dayCounter">...</div>
+  <p class="since-text">с 3 мая 2025 💞</p>
+</section>
+
+<!-- Симуляция чата -->
+<section id="chat-section" class="chat-section">
+  <div class="chat-container">
+    <div class="message bot typing-indicator" id="typing-indicator">Печатает<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></div>
+    <div id="chat-messages"></div>
   </div>
+</section>
 
-  <!-- Главный экран / Приветствие -->
-  <header id="hero">
-    <h1>С 3 месяцами нас, любовь ❤️</h1>
-    <p>Этот сайт только для тебя...</p>
-  </header>
-
-  <!-- Счётчик дней -->
-  <section id="counter">
-    <h2>Мы вместе уже:</h2>
-    <div id="daysCounter">0 дней</div>
-  </section>
-  <!-- Лента времени -->
-  <section id="timeline">
-    <h2>Наша история</h2>
-    <div class="timeline-item">1 месяц — первая фотка вместе 📸</div>
-    <div class="timeline-item">2 месяц — наш поцелуй на остановке 😘</div>
-    <!-- и т.д. -->
-  </section>
-
-  <!-- Галерея воспоминаний -->
-  <section id="gallery">
-    <h2>Моменты</h2>
-    <div class="slider">
-      <!-- Фото с подписями -->
-      <img src="images/photo1.jpg" alt="Мы вдвоем" />
-      <!-- и т.д. -->
+<!-- Галерея воспоминаний -->
+<section class="moments-timeline">
+  <h2 class="timeline-title">📅 Наша история</h2>
+  <div class="timeline-container">
+    <!-- Момент 1 -->
+    <div class="timeline-item">
+      <div class="timeline-date">30.04.2025</div>
+      <div class="timeline-dot"></div>
+      <div class="moment-popup">
+        <img src="images/moment1.jpg" alt="moment 1">
+        <p>Первый день весны вместе 🌸</p>
+      </div>
     </div>
-  </section>
-
-  <!-- “Свиток любви” (тексты и признания) -->
-  <section id="love-scroll">
-    <h2>Что я чувствую</h2>
-    <div class="love-text">Ты — лучшее, что случалось со мной...</div>
-    <!-- ещё блоки -->
-  </section>
-
-  <!-- Симуляция чата -->
-  <section id="chat">
-    <h2>Наш чат</h2>
-    <div class="message you">Приветик 🥺</div>
-    <div class="message me">Привет, солнце ❤️</div>
-    <!-- и т.д. -->
-  </section>
-
-  <!-- "Подарок" -->
-  <section id="gift">
-    <h2>Открой это 🎁</h2>
-    <button id="openGift">Открыть</button>
-    <div id="giftContent" style="display: none;">
-      <p>Сюрприз! 😍</p>
+    <!-- Момент 2 -->
+    <div class="timeline-item">
+      <div class="timeline-date">22.05.2025</div>
+      <div class="timeline-dot"></div>
+      <div class="moment-popup">
+        <img src="images/moment2.jpg" alt="moment 2">
+        <p>Тот вечер и мороженка 🍦</p>
+      </div>
     </div>
-  </section>
+    <!-- Добавь свои дальше -->
+  </div>
+</section>
 
-  <!-- Секретный раздел с паролем -->
-  <section id="secret-letter">
-    <h2>Личное сообщение</h2>
-    <div id="lock">
-      <input type="password" id="password" placeholder="Введи пароль">
-      <button id="check">Открыть</button>
-    </div>
-    <div id="secret" style="display: none;">
-      <p>Тут будет запароленное послание 💌</p>
-    </div>
-  </section>
+<section class="gift-section">
+  <div class="gift-wrapper" onclick="toggleGift()">
+    <div class="gift-lid"></div>
+    <div class="gift-body"></div>
+    <div class="gift-ribbon-vertical"></div>
+    <div class="gift-ribbon-horizontal"></div>
+  </div>
+  <div class="gift-popup hidden" id="giftPopup">
+    <p>Ты — мой самый ценный подарок 🎁❤️</p>
+    <img src="images/ringbox.png" alt="Heart" />
+  </div>
+</section>
+
+<button id="gift-open-btn">Открыть подарок 🎁</button>
+
+<div id="password-container" style="display:none;">
+  <input id="gift-password" type="password" placeholder="Введите пароль" />
+  <button id="submit-password">Подтвердить</button>
+  <div id="error-message" style="display:none;"></div>
+</div>
+
+<div id="gift-message" style="display:none;">
+  Поздравляю! Это наш секретный подарок 💖
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod eos recusandae ad possimus quo itaque, praesentium aperiam perspiciatis eius reprehenderit aspernatur ipsa nobis unde quia nam fugit? Veniam, quia nam?
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit natus soluta expedita saepe harum praesentium id iure officia voluptas iste officiis unde dolores, quis necessitatibus, excepturi sint doloribus perferendis ea?
+</div>
+
+<canvas id="confetti-canvas" style="position: fixed; top: 0; left: 0; pointer-events: none; display: none;"></canvas>
+
+
 
   <!-- Кнопка включения музыки -->
-  <audio id="bgMusic" src="music/your-song.mp3" loop></audio>
-  <button id="playMusic">🎵</button>
+ <div class="music-player">
+  <audio id="bg-music" loop>
+    <source src="music/papin-olimpos-eto-lyubov-2018.mp3" type="audio/mpeg">
+    Ваш браузер не поддерживает аудио.
+  </audio>
+  <button id="play-btn" aria-label="Play music">▶</button>
+</div>
 
-  <!-- Анимация сердечек -->
-  <canvas id="hearts"></canvas>
+<script>
+  const music = document.getElementById("bg-music");
+  const btn = document.getElementById("play-btn");
+  let isPlaying = false;
+  btn.addEventListener("click", () => {
+    if (!isPlaying) {
+      music.play();
+      btn.textContent = "⏸";
+    } else {
+      music.pause();
+      btn.textContent = "▶";
+    }
+    isPlaying = !isPlaying;
+  });
+</script>
 
+<script src="script.js" defer></script>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <span>С любовью для тебя 💖</span>
+    <span style="font-size: 0.95em; color: #b30059;">&copy; 2025</span>
+  </div>
+</footer>
 </body>
 </html>
