@@ -353,6 +353,8 @@ body {
   border-left: 4px solid #d9b2d9;
 }
 
+
+
 .timeline-item {
   position: relative;
   margin-bottom: 60px;
@@ -361,7 +363,7 @@ body {
 
 .timeline-dot {
   position: absolute;
-  left: -12px;
+  left: -14px;
   top: 0;
   width: 20px;
   height: 20px;
@@ -460,6 +462,7 @@ body {
 }
 
 
+
 /* 🔮 Плавное появление всего timeline при скролле */
 .timeline-item {
   opacity: 0;
@@ -495,6 +498,33 @@ body {
   100% {
     transform: translate(-50%, -50%) scale(2.5);
     opacity: 0;
+  }
+}
+
+/* Декоративное сердечко внизу вертикальной линии timeline */
+.timeline-container::after {
+  content: "🎀";
+  display: block;
+  position: absolute;
+  left: -25.3px;
+  bottom: -30px;
+  font-size: 2.1em;
+  /* заменяем цвет на фиолетовый */
+  color: #b4044e;
+  filter: drop-shadow(0 0 8px #96072d);
+  animation: heart-pulse 1.5s infinite cubic-bezier(.4,0,.2,1);
+  z-index: 2;
+  pointer-events: none;
+}
+
+@keyframes heart-pulse {
+  0%, 100% {
+    transform: scale(2.3);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(2.5);
+    opacity: 1;
   }
 }
 
@@ -622,27 +652,66 @@ body {
 /* Футер */
 .site-footer {
   width: 100%;
-  background: linear-gradient(90deg, #ffe4f1 0%, #fceaff 100%);
-  color: #b30059;
+  height: 120px;
+  background: linear-gradient(90deg, #f3eaff 0%, #e9d6ff 100%);
+  color: #b46cff;
   text-align: center;
-  padding: 28px 0 18px 0;
+  padding: 6px 0 20px 0;
   font-family: 'Segoe UI', sans-serif;
-  font-size: 1.15em;
-  letter-spacing: 0.5px;
-  box-shadow: 0 -2px 16px rgba(255, 192, 203, 0.12);
+  font-size: 1.18em;
+  letter-spacing: 0.7px;
+  box-shadow: 0 -2px 24px #b46cff18;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
-  margin-top: 60px;
+  margin-top: 20px;
   position: relative;
   z-index: 2;
+  overflow: hidden;
 }
 
 .site-footer .footer-content {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   align-items: center;
   justify-content: center;
+}
+
+.site-footer .footer-heart {
+  font-size: 2em;
+  color: #b46cff;
+  animation: heart-pulse 1.5s infinite cubic-bezier(.4,0,.2,1);
+  margin-bottom: 6px;
+  filter: drop-shadow(0 0 8px #b46cff88);
+}
+
+.site-footer .footer-love {
+  font-size: 1.08em;
+  font-weight: 600;
+  color: #a048c9;
+  letter-spacing: 1px;
+}
+
+.site-footer .footer-date {
+  font-size: 0.98em;
+  color: #b46cff;
+  opacity: 0.7;
+}
+
+[data-theme="dark"] .site-footer {
+  background: linear-gradient(90deg, #2a0036 0%, #3a0a3a 100%);
+  color: #d7baff;
+  box-shadow: 0 -2px 24px #b46cff33;
+}
+[data-theme="dark"] .site-footer .footer-heart {
+  color: #d7baff;
+  filter: drop-shadow(0 0 8px #d7baff88);
+}
+[data-theme="dark"] .site-footer .footer-love {
+  color: #b46cff;
+}
+[data-theme="dark"] .site-footer .footer-date {
+  color: #b46cff;
 }
 
 /* Кнопка "Открыть подарок" */
@@ -735,7 +804,7 @@ body {
   border-radius: 22px;
   padding: 32px 18px;
   box-shadow: 0 2px 18px rgba(212, 124, 240, 0.13), inset 0 0 14px rgba(201, 79, 207, 0.09);
-  max-width: 520px;
+  max-width: 520px; 
   margin: 32px auto 0 auto;
   display: none;
   font-size: 1.18rem;
@@ -972,9 +1041,19 @@ body {
   box-shadow: 0 2px 18px #2a003688, inset 0 0 14px #d77aff33;
 }
 [data-theme="dark"] .site-footer {
-  background: linear-gradient(90deg, #3a0a3a 0%, #4d1a4d 100%);
-  color: #ffb6e6;
-  box-shadow: 0 -2px 16px #2a003688;
+  background: linear-gradient(90deg, #2a0036 0%, #3a0a3a 100%);
+  color: #d7baff;
+  box-shadow: 0 -2px 24px #b46cff33;
+}
+[data-theme="dark"] .site-footer .footer-heart {
+  color: #d7baff;
+  filter: drop-shadow(0 0 8px #d7baff88);
+}
+[data-theme="dark"] .site-footer .footer-love {
+  color: #b46cff;
+}
+[data-theme="dark"] .site-footer .footer-date {
+  color: #b46cff;
 }
 
 

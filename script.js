@@ -256,7 +256,7 @@ const errorMessage = document.getElementById('error-message');
 const giftMessage = document.getElementById('gift-message');
 const confettiCanvas = document.getElementById('confetti-canvas');
 
-const correctPassword = 'love123'; // Твой пароль
+const correctPassword = 'сучка'; // Твой пароль
 let confettiStarted = false;
 
 giftBtn.addEventListener('click', () => {
