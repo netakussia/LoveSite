@@ -256,7 +256,7 @@ const errorMessage = document.getElementById('error-message');
 const giftMessage = document.getElementById('gift-message');
 const confettiCanvas = document.getElementById('confetti-canvas');
 
-const correctPassword = 'love123'; // Твой пароль
+const correctPassword = 'сучка'; // Твой пароль
 let confettiStarted = false;
 
 giftBtn.addEventListener('click', () => {
@@ -366,6 +366,53 @@ function startConfetti() {
 
   draw();
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const themeToggle = document.getElementById('theme-toggle');
+  if (!themeToggle) return;
+
+  // Плавное появление кнопки
+  themeToggle.classList.add('hide');
+  setTimeout(() => {
+    themeToggle.classList.remove('hide');
+  }, 100);
+
+  function setTheme(mode) {
+    document.documentElement.setAttribute('data-theme', mode);
+    themeToggle.textContent = mode === 'dark' ? '☀️' : '🌙';
+  }
+
+  // Начальная установка темы
+  let theme = localStorage.getItem('theme');
+  if (theme !== 'dark' && theme !== 'light') {
+    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  setTheme(theme);
+
+  themeToggle.addEventListener('click', (e) => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    // Анимация кругового перехода
+    const circle = document.createElement('div');
+    circle.className = 'theme-transition-circle';
+    const rect = themeToggle.getBoundingClientRect();
+    const x = rect.left + rect.width / 2 + window.scrollX;
+    const y = rect.top + rect.height / 2 + window.scrollY;
+    circle.style.setProperty('--theme-circle-x', `${x}px`);
+    circle.style.setProperty('--theme-circle-y', `${y}px`);
+    circle.style.setProperty('--theme-transition-bg', next === 'dark' ? '#2a0036' : '#ffe4f1');
+    document.body.appendChild(circle);
+
+    setTimeout(() => {
+      setTheme(next);
+      localStorage.setItem('theme', next);
+    }, 400); // чуть дольше для плавности
+
+    circle.addEventListener('animationend', () => {
+      circle.remove();
+    });
+  });
+});
 
 
 
