@@ -414,6 +414,88 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// --- Только для мобильных: раскрытие миниатюр timeline по тапу на картинку ---
+if (window.innerWidth <= 700) {
+  document.querySelectorAll('.moment-popup-img-wrap').forEach(imgWrap => {
+    imgWrap.addEventListener('click', function (e) {
+      e.stopPropagation();
+      const item = imgWrap.closest('.timeline-item');
+      // Закрыть все остальные
+      document.querySelectorAll('.timeline-item.open').forEach(opened => {
+        if (opened !== item) opened.classList.remove('open');
+      });
+      // Переключить текущую
+      item.classList.toggle('open');
+    });
+  });
+  // Если клик вне timeline — всё свернуть
+  document.body.addEventListener('click', function (e) {
+    if (!e.target.closest('.timeline-item')) {
+      document.querySelectorAll('.timeline-item.open').forEach(opened => {
+        opened.classList.remove('open');
+      });
+    }
+  });
+}
+
+// --- Предложение: "Да" и убегающая "Нет" ---
+document.addEventListener("DOMContentLoaded", () => {
+  // Proposal logic
+  const yesBtn = document.getElementById('yes-btn');
+  const noBtn = document.getElementById('no-btn');
+  const ringImg = document.getElementById('ring-img');
+  const msgAbove = document.getElementById('gift-message-above');
+  const giftPopup = document.getElementById('giftPopup');
+  const proposalBtns = document.querySelector('.proposal-buttons');
+
+  // "Да" — показать надпись и кольцо
+  if (yesBtn && noBtn && ringImg && msgAbove) {
+    yesBtn.addEventListener('click', function (e) {
+      msgAbove.textContent = "Официально — ты моя жена в душе 💍";
+      msgAbove.classList.add('active');
+      ringImg.classList.add('active');
+    });
+
+    // "Нет" — убегает
+    let noBtnMoving = false;
+    function moveNoBtn(e) {
+      if (window.innerWidth <= 600) return; // на мобилке не убегает
+      if (noBtnMoving) return;
+      noBtnMoving = true;
+      const parent = proposalBtns;
+      const btnRect = noBtn.getBoundingClientRect();
+      const parentRect = parent.getBoundingClientRect();
+      const maxLeft = parentRect.width - btnRect.width - 8;
+      const maxTop = parentRect.height - btnRect.height - 8;
+      // Случайная позиция в пределах контейнера
+      let left = Math.random() * maxLeft;
+      let top = Math.random() * maxTop;
+      // Не слишком близко к текущей позиции
+      left = Math.max(0, Math.min(left, maxLeft));
+      top = Math.max(0, Math.min(top, maxTop));
+      noBtn.style.position = 'absolute';
+      noBtn.style.left = left + "px";
+      noBtn.style.top = top + "px";
+      noBtn.style.transform = `scale(1.05) rotate(${Math.random() * 10 - 5}deg)`;
+      setTimeout(() => { noBtnMoving = false; }, 250);
+    }
+    noBtn.addEventListener('mouseenter', moveNoBtn);
+    noBtn.addEventListener('touchstart', moveNoBtn);
+
+    // Сброс позиции при ресайзе/открытии
+    function resetNoBtn() {
+      if (window.innerWidth <= 600) {
+        noBtn.style.position = '';
+        noBtn.style.left = '';
+        noBtn.style.top = '';
+        noBtn.style.transform = '';
+      }
+    }
+    window.addEventListener('resize', resetNoBtn);
+    resetNoBtn();
+  }
+});
+
 
 
 

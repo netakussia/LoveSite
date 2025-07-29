@@ -415,125 +415,172 @@ body {
   pointer-events: auto;
 }
 
-/* 📱 Адаптация под мобильные устройства */
-@media (max-width: 600px) {
+/* 📱 Только уменьшение масштаба timeline на мобильных */
+@media (max-width: 700px) {
+  .moments-timeline {
+    padding: 24px 0 18px 0;
+    background: #fff3f8;
+  }
+  .timeline-title {
+    font-size: 1.08rem;
+    margin-bottom: 10px;
+    color: #5e2a84;
+    text-align: left;
+    padding-left: 12px;
+  }
   .timeline-container {
-    border-left: none;
-    border-top: 4px solid #d9b2d9;
-    padding-left: 0;
-    padding-top: 30px;
     display: flex;
-    overflow-x: auto;
-    gap: 24px;
     flex-direction: row;
+    gap: 10px;
+    overflow-x: auto;
+    border: none;
+    padding: 0 8px 8px 8px;
+    width: 100vw;
+    max-width: 100vw;
+    box-sizing: border-box;
     scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: #d9b2d9 #fff3f8;
+    margin: 0;
+    position: relative;
+    background: none;
   }
-
+  .timeline-container::-webkit-scrollbar {
+    height: 6px;
+    background: #fff3f8;
+  }
+  .timeline-container::-webkit-scrollbar-thumb {
+    background: #e9d6ff;
+    border-radius: 8px;
+  }
   .timeline-item {
-    min-width: 220px;
+    min-width: 120px;
+    max-width: 130px;
     flex-shrink: 0;
-    padding-left: 0;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 1px 6px #d9b2d91a;
+    padding: 6px 4px 10px 4px;
+    margin: 0;
+    position: relative;
+    text-align: left;
     scroll-snap-align: start;
-    margin-bottom: 0;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-left: none;
+    opacity: 1;
+    transform: none;
   }
-
   .timeline-dot {
-    left: 50%;
-    top: -16px;
-    transform: translateX(-50%);
+    position: static;
+    width: 11px;
+    height: 11px;
+    background: #be0a9d;
+    border-radius: 50%;
+    box-shadow: 0 0 4px rgba(0,0,0,0.08);
+    border: 2px solid #fff;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-top: 2px;
+    display: inline-block;
   }
-
   .timeline-date {
     position: static;
-    margin-top: 30px;
-    font-size: 0.85rem;
+    margin: 0 0 4px 0;
+    font-size: 0.82em;
     color: #a04890;
-    text-align: center;
+    text-align: left;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+    display: block;
+    padding-left: 2px;
   }
-
   .moment-popup {
     opacity: 1;
     transform: none;
     pointer-events: auto;
-    margin-top: 12px;
+    margin-top: 4px;
     width: 100%;
+    max-width: 100%;
+    box-shadow: none;
+    background: transparent;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .moment-popup img {
+    border-radius: 7px;
+    margin-bottom: 4px;
+    width: 100%;
+    max-width: 100%;
+    height: 46px;
+    object-fit: cover;
+    box-shadow: 0 1px 4px #d9b2d91a;
+  }
+  .moment-popup p {
+    font-size: 0.89em;
+    color: #d83c70;
+    margin: 0;
+    line-height: 1.3;
+    text-align: left;
+    font-weight: 500;
+    word-break: break-word;
+    padding-left: 2px;
+  }
+  /* Убираем вертикальную линию и сердечко/бантик */
+  .timeline-container {
+    border-left: none !important;
+    border-top: none !important;
+  }
+  .timeline-container::after {
+    display: none !important;
   }
 }
 
-
-
-/* 🔮 Плавное появление всего timeline при скролле */
-.timeline-item {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease;
-}
-
-.timeline-item.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* 💓 Пульс точки */
-.timeline-dot::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 40px;
-  height: 40px;
-  border-radius: 80%;
-  background: rgba(152, 14, 83, 0.514);
-  transform: translate(-50%, -50%);
-  animation: timeline-pulse 2.5s infinite ease-out;
-  z-index: -1;
-}
-
-@keyframes timeline-pulse {
-  0% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 0.8;
+/* Темная тема для мобильного timeline */
+@media (max-width: 700px) {
+  [data-theme="dark"] .timeline-item {
+    background: #2a0036;
+    box-shadow: 0 1px 6px #2a003633;
   }
-  100% {
-    transform: translate(-50%, -50%) scale(2.5);
-    opacity: 0;
+  [data-theme="dark"] .moment-popup p {
+    color: #d7baff;
+  }
+  [data-theme="dark"] .timeline-dot {
+    background: #d77aff;
+    border: 2px solid #ffe4ec;
+  }
+  [data-theme="dark"] .timeline-date {
+    color: #ffb6e6;
   }
 }
 
-/* Декоративное сердечко внизу вертикальной линии timeline */
+/* Сердечко внизу вертикальной timeline (только для десктопа) */
 .timeline-container::after {
   content: "🎀";
   display: block;
   position: absolute;
-  left: -25.3px;
-  bottom: -30px;
-  font-size: 2.1em;
-  /* заменяем цвет на фиолетовый */
-  color: #b4044e;
-  filter: drop-shadow(0 0 8px #96072d);
+  left: -26px;
+  /* центрируем по оси линии (4px линия + 20px точка/2) */
+  bottom: -28px;
+  font-size: 2.2em;
+  color: #d83c70;
+  filter: drop-shadow(0 0 8px #ffb6e655);
   animation: heart-pulse 1.5s infinite cubic-bezier(.4,0,.2,1);
   z-index: 2;
   pointer-events: none;
 }
 
-@keyframes heart-pulse {
-  0%, 100% {
-    transform: scale(2.3);
-    opacity: 0.9;
-  }
-  50% {
-    transform: scale(2.5);
-    opacity: 1;
+/* Скрываем сердечко на мобильных (горизонтальный timeline) */
+@media (max-width: 700px) {
+  .timeline-container::after {
+    display: none !important;
   }
 }
 
-
-
-
-
-
-
+/* ...existing code... */
 
 
 
@@ -545,7 +592,7 @@ body {
 .gift-section {
   text-align: center;
   padding: 80px 20px;
-  background: #fff0f6;
+  background: transparent;
   position: relative;
 }
 
@@ -590,7 +637,6 @@ body {
 
 .gift-wrapper.open .gift-lid {
   transform: translateX(-50%) rotateZ(-16deg) translateY(-28px);
-  top: -38px;
 }
 
 .gift-ribbon-vertical {
@@ -649,78 +695,120 @@ body {
   display: none;
 }
 
-/* Футер */
+/* Новый футер: фон-переход, без сердечка, текст по всей ширине, низкий */
 .site-footer {
   width: 100%;
-  height: 120px;
-  background: linear-gradient(90deg, #f3eaff 0%, #e9d6ff 100%);
-  color: #b46cff;
+  min-height: 35px;
+  background: linear-gradient(180deg, #fff3f8 0%, #f3eaff 60%, #e9d6ff 100%);
+  color: #7a3cff;
   text-align: center;
-  padding: 6px 0 20px 0;
-  font-family: 'Segoe UI', sans-serif;
-  font-size: 1.18em;
-  letter-spacing: 0.7px;
-  box-shadow: 0 -2px 24px #b46cff18;
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  margin-top: 20px;
+  padding: 18px 0 10px 0;
+  font-family: 'Segoe UI', 'Trebuchet MS', sans-serif;
+  font-size: 1.08em;
+  letter-spacing: 0.5px;
+  box-shadow: 0 -2px 18px #b46cff18;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin-top: 50px;
   position: relative;
   z-index: 2;
   overflow: hidden;
+  transition: background 0.3s;
 }
 
 .site-footer .footer-content {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0 32px;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0 24px;
+  box-sizing: border-box;
 }
 
-.site-footer .footer-heart {
-  font-size: 2em;
-  color: #b46cff;
-  animation: heart-pulse 1.5s infinite cubic-bezier(.4,0,.2,1);
-  margin-bottom: 6px;
-  filter: drop-shadow(0 0 8px #b46cff88);
+.site-footer .footer-love,
+.site-footer .footer-message,
+.site-footer .footer-sign,
+.site-footer .footer-date {
+  display: inline-block;
+  margin: 0 12px;
+  font-size: 1em;
+  color: #7a3cff;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
 }
 
 .site-footer .footer-love {
-  font-size: 1.08em;
-  font-weight: 600;
   color: #a048c9;
-  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.site-footer .footer-sign {
+  color: #c94fcf;
+  font-style: italic;
 }
 
 .site-footer .footer-date {
-  font-size: 0.98em;
   color: #b46cff;
   opacity: 0.7;
 }
 
-[data-theme="dark"] .site-footer {
-  background: linear-gradient(90deg, #2a0036 0%, #3a0a3a 100%);
-  color: #d7baff;
-  box-shadow: 0 -2px 24px #b46cff33;
+.site-footer .footer-heart {
+  display: none;
 }
-[data-theme="dark"] .site-footer .footer-heart {
+
+/* Для мобильных — текст переносится */
+@media (max-width: 700px) {
+  .site-footer .footer-content {
+    flex-direction: column;
+    gap: 4px 0;
+    align-items: flex-start;
+    text-align: left;
+    padding: 0 10px;
+  }
+  .site-footer .footer-love,
+  .site-footer .footer-message,
+  .site-footer .footer-sign,
+  .site-footer .footer-date {
+    margin: 0 0 2px 0;
+    display: block;
+    width: 100%;
+    font-size: 0.98em;
+  }
+}
+
+/* Темная тема */
+[data-theme="dark"] .site-footer {
+  background: linear-gradient(180deg, #2a0036 0%, #3a0a3a 100%);
   color: #d7baff;
-  filter: drop-shadow(0 0 8px #d7baff88);
+  box-shadow: 0 -2px 18px #b46cff33;
 }
 [data-theme="dark"] .site-footer .footer-love {
   color: #b46cff;
 }
+[data-theme="dark"] .site-footer .footer-message {
+  color: #d7baff;
+}
 [data-theme="dark"] .site-footer .footer-date {
   color: #b46cff;
 }
+[data-theme="dark"] .site-footer .footer-sign {
+  color: #ffb6e6;
+}
+
 
 /* Кнопка "Открыть подарок" */
 #gift-open-btn {
   background: linear-gradient(135deg, #d77aff, #ff89cb);
   border: none;
-  padding: 14px 26px;
+  padding: 11px 26px;
   font-size: 1.1rem;
-  border-radius: 16px;
+  border-radius: 21px;
   color: white;
   font-weight: bold;
   cursor: pointer;
@@ -728,7 +816,7 @@ body {
   transition: background 0.3s ease, transform 0.2s ease;
   user-select: none;
   display: block;
-  margin: 24px auto 0 auto;
+  margin: 29px auto 0 auto;
 }
 
 #gift-open-btn:hover {
@@ -1043,17 +1131,136 @@ body {
 [data-theme="dark"] .site-footer {
   background: linear-gradient(90deg, #2a0036 0%, #3a0a3a 100%);
   color: #d7baff;
-  box-shadow: 0 -2px 24px #b46cff33;
-}
-[data-theme="dark"] .site-footer .footer-heart {
-  color: #d7baff;
-  filter: drop-shadow(0 0 8px #d7baff88);
+  box-shadow: 0 -2px 18px #b46cff33;
 }
 [data-theme="dark"] .site-footer .footer-love {
   color: #b46cff;
 }
+[data-theme="dark"] .site-footer .footer-message {
+  color: #d7baff;
+}
 [data-theme="dark"] .site-footer .footer-date {
   color: #b46cff;
+}
+[data-theme="dark"] .site-footer .footer-sign {
+  color: #ffb6e6;
+}
+
+/* Надпись над коробочкой */
+.gift-message-above {
+  text-align: center;
+  font-size: 1.25em;
+  font-weight: 700;
+  color: #b6004c;
+  margin-bottom: 18px;
+  min-height: 1.5em;
+  transition: opacity 0.4s;
+  opacity: 0;
+  pointer-events: none;
+}
+.gift-message-above.active {
+  opacity: 1;
+}
+
+/* Кнопки предложения */
+.proposal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 18px;
+  width: 100%;
+}
+
+.proposal-yes, .proposal-no {
+  font-size: 1.13em;
+  padding: 12px 32px;
+  border-radius: 18px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: box-shadow 0.2s, background 0.2s, color 0.2s, transform 0.2s;
+  outline: none;
+  box-shadow: 0 2px 12px #d77aff22;
+  background: linear-gradient(135deg, #d77aff 60%, #ff89cb 100%);
+  color: #fff;
+  position: relative;
+  z-index: 1;
+  user-select: none;
+}
+
+.proposal-yes {
+  animation: yes-pulse 1.2s infinite;
+  box-shadow: 0 0 16px #d77aff66, 0 2px 12px #d77aff22;
+  background: linear-gradient(135deg, #d77aff 60%, #ff89cb 100%);
+  border: 2px solid #b6004c;
+}
+@keyframes yes-pulse {
+  0%, 100% { box-shadow: 0 0 16px #d77aff66, 0 2px 12px #d77aff22; }
+  50% { box-shadow: 0 0 32px #ff89cb99, 0 2px 18px #d77aff44; }
+}
+
+.proposal-yes:active {
+  background: linear-gradient(135deg, #ff89cb 60%, #d77aff 100%);
+  color: #fff;
+  transform: scale(0.97);
+}
+
+.proposal-no {
+  background: linear-gradient(135deg, #e3e3e3 60%, #ffd6f6 100%);
+  color: #b6004c;
+  border: 2px solid #ffd6f6;
+  position: absolute;
+  /* left/top задаются скриптом */
+  will-change: left, top, transform;
+  z-index: 2;
+}
+
+.proposal-no:active {
+  background: #ffd6f6;
+  color: #b6004c;
+  transform: scale(0.97);
+}
+
+/* Контейнер для убегающей кнопки */
+.proposal-buttons {
+  position: relative;
+  min-height: 56px;
+}
+
+/* Кольцо: плавное появление */
+#ring-img {
+  opacity: 0.4;
+  filter: blur(2px) grayscale(0.7);
+  transition: opacity 0.5s, filter 0.5s, transform 0.5s;
+}
+#ring-img.active {
+  opacity: 1;
+  filter: none;
+  transform: scale(1.08) rotate(-6deg);
+}
+
+/* Мобильная адаптация */
+@media (max-width: 600px) {
+  .proposal-buttons {
+    flex-direction: column;
+    gap: 14px;
+    min-height: 100px;
+    align-items: center;
+  }
+  .proposal-yes, .proposal-no {
+    width: 90vw;
+    max-width: 320px;
+    font-size: 1.08em;
+    padding: 13px 0;
+  }
+  .proposal-no {
+    left: 0 !important;
+    top: 0 !important;
+    position: relative !important;
+    margin: 0 auto;
+    display: block;
+    transform: none !important;
+  }
 }
 
 
