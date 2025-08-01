@@ -273,7 +273,7 @@ submitPasswordBtn.addEventListener('click', () => {
     passwordContainer.style.display = 'none';
     showGiftMessage();
   } else {
-    errorMessage.textContent = 'Неверный пароль, попробуй ещё';
+    errorMessage.textContent = 'Не те букавки солнышко, попробуй ещё☺️';
     errorMessage.style.display = 'block';
     shake(passwordContainer);
   }
@@ -435,6 +435,41 @@ if (window.innerWidth <= 700) {
         opened.classList.remove('open');
       });
     }
+  });
+}
+
+// --- Мобильный полноэкранный просмотр фото timeline ---
+if (window.innerWidth <= 700) {
+  document.querySelectorAll('.moment-popup-img-wrap img').forEach(img => {
+    img.addEventListener('click', function (e) {
+      e.stopPropagation();
+      // Создать оверлей
+      const overlay = document.createElement('div');
+      overlay.className = 'timeline-photo-fullscreen';
+      // Клонируем картинку
+      const bigImg = document.createElement('img');
+      bigImg.src = img.src;
+      bigImg.alt = img.alt || '';
+      overlay.appendChild(bigImg);
+      // Кнопка закрытия
+      const closeBtn = document.createElement('button');
+      closeBtn.className = 'timeline-photo-fullscreen-close';
+      closeBtn.innerHTML = '✕';
+      overlay.appendChild(closeBtn);
+
+      // Закрытие по кнопке или по клику на фон
+      function closeOverlay() {
+        overlay.remove();
+        document.body.style.overflow = '';
+      }
+      closeBtn.addEventListener('click', closeOverlay);
+      overlay.addEventListener('click', function (ev) {
+        if (ev.target === overlay) closeOverlay();
+      });
+      // Отключаем скролл body
+      document.body.style.overflow = 'hidden';
+      document.body.appendChild(overlay);
+    });
   });
 }
 
