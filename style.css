@@ -1239,29 +1239,64 @@ body {
   transform: scale(1.08) rotate(-6deg);
 }
 
-/* Мобильная адаптация */
-@media (max-width: 600px) {
-  .proposal-buttons {
-    flex-direction: column;
-    gap: 14px;
-    min-height: 100px;
+/* --- Мобильная адаптация: полноэкранный просмотр фото timeline --- */
+@media (max-width: 700px) {
+  .timeline-item {
+    /* ...existing code... */
+    z-index: 1;
+  }
+  .moment-popup-img-wrap {
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+  }
+  /* Оверлей для полноэкранного фото */
+  .timeline-photo-fullscreen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(30, 0, 40, 0.92);
+    display: flex;
     align-items: center;
+    justify-content: center;
+    animation: fadeInPhoto 0.3s;
+    cursor: pointer;
+    transition: background 0.2s;
   }
-  .proposal-yes, .proposal-no {
-    width: 90vw;
-    max-width: 320px;
-    font-size: 1.08em;
-    padding: 13px 0;
+  @keyframes fadeInPhoto {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
-  .proposal-no {
-    left: 0 !important;
-    top: 0 !important;
-    position: relative !important;
-    margin: 0 auto;
+  .timeline-photo-fullscreen img {
+    max-width: 98vw;
+    max-height: 85vh;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px #d77aff55;
+    background: #fff;
+    object-fit: contain;
+    transition: box-shadow 0.2s;
     display: block;
-    transform: none !important;
+  }
+  .timeline-photo-fullscreen-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    font-size: 2.2em;
+    color: #fff;
+    background: none;
+    border: none;
+    z-index: 10001;
+    cursor: pointer;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+    padding: 0 8px;
+  }
+  .timeline-photo-fullscreen-close:active {
+    opacity: 0.5;
   }
 }
+
+/* ...existing code... */
 
 
 
