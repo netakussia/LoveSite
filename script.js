@@ -109,19 +109,9 @@ window.addEventListener("load", () => {
 
 
 
-
-
-function calculateDaysTogether(startDateStr) {
-  const startDate = new Date(startDateStr)
-  const now = new Date()
-  const diffTime = now - startDate
-  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24))
-  return diffDays
-}
-
 function updateDayCounter() {
   const counter = document.getElementById("dayCounter")
-  const days = calculateDaysTogether("2025-05-03") // 🠔 ВАША ДАТА
+  const days = 109 // статичное число
   counter.textContent = `${days} ${pluralizeDays(days)}`
 }
 
@@ -132,6 +122,7 @@ function pluralizeDays(n) {
 }
 
 updateDayCounter()
+
 
 
 
