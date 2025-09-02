@@ -110,9 +110,14 @@ window.addEventListener("load", () => {
 
 
 function updateDayCounter() {
-  const counter = document.getElementById("dayCounter")
-  const days = 109 // статичное число
-  counter.textContent = `${days} ${pluralizeDays(days)}`
+  const counter = document.getElementById("dayCounter");
+  // Укажи дату начала (год, месяц-1, день)
+  const startDate = new Date(2025, 4, 3); // 16 июня 2024 (месяцы с нуля!)
+  const now = new Date();
+  // Считаем разницу в днях
+  const diffTime = now - startDate;
+  const days = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1; // +1 чтобы включить первый день
+  counter.textContent = `${days} ${pluralizeDays(days)}`;
 }
 
 function pluralizeDays(n) {
