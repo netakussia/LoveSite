@@ -527,6 +527,25 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+document.getElementById('submit-password').onclick = function() {
+  const password = document.getElementById('gift-password').value;
+  const msg1 = document.getElementById('gift-message');
+  const msg2 = document.getElementById('gift-message-2');
+  const error = document.getElementById('error-message');
+  msg1.style.display = 'none';
+  msg2.style.display = 'none';
+  error.style.display = 'none';
+
+  if (password === 'сучка') {
+    msg1.style.display = 'block';
+  } else if (password === 'любоф') {
+    msg2.style.display = 'block';
+  } else {
+    error.textContent = 'Неверный пароль!';
+    error.style.display = 'block';
+  }
+};
+
 
 
 

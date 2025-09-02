@@ -22,7 +22,7 @@
   <!-- Главный экран / Приветствие -->
   <header id="hero">
     <h1>С 4 месяца нас, любимая ❤️</h1>
-    <p>Подарок для тебя😍</p>
+    <p>Подарок только для тебя))</p>
   </header>
 <canvas id="hearts-canvas"></canvas>
 
@@ -297,6 +297,17 @@
 И я верю, что мы пройдём вместе всё — и дождь, и солнце, и школы, и переезды, и усталость, и радость, и свадьбу, и долгую жизнь, где мы состаримся вместе… и когда-нибудь, как и мечталось — умрём в один день. Но пока до этого далеко, у нас впереди целая история. И, блять, я готов пройти её с тобой до конца.
 </div>
 
+<div id="gift-message-2" style="display:none; margin-top: 20px; font-size: 1.2rem; color: #4fc9cf;">
+Я не могу поверить, что мы снова вместе, что после всех этих дней и моментов непонимания мы смогли вернуться друг к другу. 
+Это ощущение будто весь мир снова стал ярче, будто каждая минута без тебя была подготовкой к тому, чтобы ценить тебя ещё сильнее. 
+Я хочу, чтобы ты знала, что каждый смех, каждый взгляд, каждый момент рядом с тобой для меня бесценен. 
+Ты даришь мне радость, тепло и любовь, которых я никогда не хотел отпускать. Я люблю тебя всем сердцем, всей душой, и каждый день с тобой ощущается как чудо. 
+То, что мы смогли пройти через трудности и снова найти друг друга, только делает нашу связь сильнее, и я обещаю беречь это чувство, нашу близость и каждое мгновение, которое мы проводим вместе.
+Ты — моя радость, моя поддержка, моя любовь, и я счастлив, что мы снова «мы».
+Поздравляю нас с этим новым этапом в нашей истории. Я верю, что впереди у нас ещё много счастливых дней, наполненных любовью и взаимопониманием. Спасибо тебе за то, что ты есть в моей жизни, и за то, что мы снова вместе. Я люблю тебя.
+С 4 месяцами нас, любимая ❤️
+</div>
+
 <canvas id="confetti-canvas" style="position: fixed; top: 0; left: 0; pointer-events: none; display: none;"></canvas>
 
 
@@ -305,17 +316,34 @@
  <div class="music-player">
   <audio id="bg-music" loop>
     <source src="music/papin-olimpos-eto-lyubov-2018.mp3" type="audio/mpeg">
+    <source src="music/second-song.mp3" type="audio/mpeg">
     Ваш браузер не поддерживает аудио.
   </audio>
   <button id="play-btn" aria-label="Play music">▶</button>
+  <button id="next-btn" aria-label="Next song"> ⏭ </button>
 </div>
 
 
 <script>
   const music = document.getElementById("bg-music");
   const btn = document.getElementById("play-btn");
+  const nextBtn = document.getElementById("next-btn");
 
+  // Список треков
+  const tracks = [
+    "music/papin-olimpos-eto-lyubov-2018.mp3",
+    "music/Рем Дигга - Тринадцатый.mp3"
+  ];
+  let currentTrack = 0;
   let isPlaying = false;
+
+  function setTrack(idx) {
+    music.src = tracks[idx];
+    music.load();
+    if (isPlaying) {
+      music.play();
+    }
+  }
 
   btn.addEventListener("click", () => {
     if (!isPlaying) {
@@ -326,6 +354,21 @@
       btn.textContent = "▶";
     }
     isPlaying = !isPlaying;
+  });
+
+  nextBtn.addEventListener("click", () => {
+    currentTrack = (currentTrack + 1) % tracks.length;
+    setTrack(currentTrack);
+    btn.textContent = "⏸";
+    isPlaying = true;
+  });
+
+  // При окончании трека — следующий (если не loop)
+  music.addEventListener("ended", () => {
+    if (!music.loop) {
+      currentTrack = (currentTrack + 1) % tracks.length;
+      setTrack(currentTrack);
+    }
   });
 </script>
 
