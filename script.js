@@ -511,8 +511,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Сброс позиции при ресайзе/открытии
     function resetNoBtn() {
       if (window.innerWidth <= 600) {
-        noBtn.style.position = '50%';
-        noBtn.style.left = '20px';
+        noBtn.style.position = '';
+        noBtn.style.left = '';
         noBtn.style.top = '';
         noBtn.style.transform = '';
       }
