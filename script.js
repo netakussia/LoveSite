@@ -131,10 +131,6 @@ updateDayCounter()
 
 
 
-
-
-
-
 const chatMessages = document.getElementById("chat-messages");
 const typingIndicator = document.getElementById("typing-indicator");
 
