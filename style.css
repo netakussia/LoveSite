@@ -2,15 +2,10 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, 
-    #ffe4f1 0%, 
-    #fceaff 25%, 
-    #e6e6fa 50%, 
-    #fff0f5 75%, 
-    #ffe4f1 100%);
+  background: linear-gradient(135deg, #2d2d3a 0%, #4b4b5e 25%, #6a6a7d 50%, #3a3a4d 75%, #2d2d3a 100%);
   background-size: 200% 200%;
   animation: dreamyFlow 30s ease infinite;
-  color: #2d2d2d;
+  color: #bfc2d1;
 }
 
 @keyframes dreamyFlow {
@@ -36,8 +31,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #ffc0cb, #ffe4e1);
-  color: #3a3a3a;
+  background: linear-gradient(135deg, #3a3a4d, #4b4b5e);
+  color: #bfc2d1;
   text-align: center;
   padding: 20px;
   box-sizing: border-box;
@@ -50,12 +45,12 @@ body {
   margin: 0.2em 0;
   font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
   font-weight: 800;
-  background: linear-gradient(90deg, #c61f64 10%, #781616 60%, #bc1414 100%);
+  background: linear-gradient(90deg, #7a3cff 10%, #4b4b5e 60%, #2d2d3a 100%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 2px 12px #ffd6f655, 0 1px 2px #b3005922;
+  text-shadow: 0 2px 12px #4b4b5e55, 0 1px 2px #2d2d3a22;
   animation: heroPulse 2.2s infinite cubic-bezier(.4,0,.2,1);
   letter-spacing: 1px;
 }
@@ -69,13 +64,13 @@ body {
   font-size: 1.35em;
   max-width: 600px;
   font-family: 'Segoe UI', sans-serif;
-  color: #b30059;
-  background: linear-gradient(90deg, #850229 0%, #e41537 100%);
+  color: #7a3cff;
+  background: linear-gradient(90deg, #4b4b5e 0%, #7a3cff 100%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 1px 8px #ffd6f633;
+  text-shadow: 0 1px 8px #4b4b5e33;
   font-style: italic;
   letter-spacing: 0.7px;
   margin-top: 0.5em;
@@ -94,7 +89,7 @@ body {
     to bottom,
     rgba(249, 143, 161, 0) 0%,
     rgba(255, 192, 203, 0.373) 40%,
-    #ffe4ec 100%
+    #4b4b5e 100%
   );
   z-index: 1;
 }
@@ -107,7 +102,7 @@ body {
 .counter-section {
   text-align: center;
   padding: 60px 20px;
-  background: linear-gradient(to right, #ffe4ec, #fceaff);
+  background: linear-gradient(to right, #3a3a4d, #4b4b5e);
   border-radius: 30px;
   margin: 40px auto 30px auto; /* отрицательный margin-top для "въезда" */
   max-width: 600px;
@@ -118,21 +113,21 @@ body {
 
 .counter-section h2 {
   font-size: 2em;
-  color: #cc3377;
+  color: #7a3cff;
   margin-bottom: 10px;
   font-family: 'Trebuchet MS', sans-serif;
 }
 
 .day-counter {
   font-size: 3.5em;
-  color: #ff3366;
+  color: #4fc9cf;
   font-weight: bold;
   animation: pulse 2s infinite ease-in-out;
 }
 
 .since-text {
   font-size: 1.1em;
-  color: #884466;
+  color: #7a3cff;
   margin-top: 10px;
 }
 
@@ -150,7 +145,7 @@ body {
 #preloader {
   position: fixed;
   inset: 0;
-  background: linear-gradient(135deg, #ffe4f1, #fceaff);
+  background: linear-gradient(135deg, #2d2d3a, #4b4b5e);
   z-index: 9999;
   display: flex;
   align-items: center;
@@ -162,7 +157,7 @@ body {
 
 .loader-text {
   font-size: 1.8em;
-  color: #cc3366;
+  color: #7a3cff;
   text-align: center;
   padding: 20px;
   animation: fadeIn 2s ease-in-out infinite alternate;
@@ -186,6 +181,7 @@ body {
   width: 100vw;
   height: 100vh;
   pointer-events: none;
+  opacity: 0.2;
 }
 
 
@@ -201,9 +197,9 @@ body {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: rgba(255, 240, 250, 0.6);
+  background: rgba(60, 60, 80, 0.6);
   backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 150, 200, 0.3);
+  border: 2px solid rgba(120, 120, 160, 0.3);
   padding: 12px 16px;
   border-radius: 20px;
   box-shadow: 0 4px 15px rgba(255, 100, 150, 0.2);
@@ -217,7 +213,7 @@ body {
 
   background: none;
   border: none;
-  color: #d875aa;
+  color: #7a3cff;
   font-size: 20px;
   cursor: pointer;
   transition: transform 0.3s ease, color 0.2s ease;
@@ -226,7 +222,7 @@ body {
 
 #play-btn:hover {
    transform: translateX(2px) scale(1.6);
-  color: #ff92b2;
+  color: #4fc9cf;
 }
 
 
@@ -234,7 +230,7 @@ body {
 
   background: none;
   border: none;
-  color: #d875aa;
+  color: #7a3cff;
   font-size: 20px;
   cursor: pointer;
   transition: transform 0.3s ease, color 0.2s ease;
@@ -243,7 +239,7 @@ body {
 
 #next-btn:hover {
    transform: translateX(0.1px) scale(1.5);
-  color: #ff6f9a;
+  color: #4fc9cf;
 }
 
 
@@ -252,7 +248,7 @@ body {
   padding: 40px 20px;
   display: flex;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(60, 60, 80, 0.3);
   backdrop-filter: blur(10px);
   border-radius: 16px;
   margin: 40px 20px;
@@ -262,7 +258,8 @@ body {
 .chat-container {
   max-width: 400px;
   width: 100%;
-  background-color: #ffffffaa;
+  background-color: #2d2d3acc;
+  color: #bfc2d1;
   border-radius: 16px;
   padding: 20px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
@@ -271,7 +268,7 @@ body {
 }
 
 .message {
-  background-color: #f1f0f0;
+  background-color: #3a3a4d;
   border-radius: 12px;
   padding: 10px 14px;
   margin-bottom: 10px;
@@ -284,8 +281,7 @@ body {
 }
 
 .bot {
-  background-color: #c985ea68;
-  align-self: flex-start;
+  background-color: #4b4b5e;
 }
 
 .typing-indicator {
@@ -349,14 +345,15 @@ body {
 
 .moments-timeline {
   padding: 40px 20px;
-  background: #fff3f8;
+  background: #2d2d3a;
+  color: #bfc2d1;
   text-align: center;
 }
 
 .timeline-title {
   font-size: 2rem;
   margin-bottom: 30px;
-  color: #5e2a84;
+  color: #7a3cff;
 }
 
 .timeline-container {
@@ -381,7 +378,7 @@ body {
   top: 0;
   width: 20px;
   height: 20px;
-  background: #be0a9d;
+  background: #7a3cff;
   border-radius: 50%;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   border: 2px solid white;
@@ -394,14 +391,15 @@ body {
   width: 130px;
   text-align: right;
   font-weight: bold;
-  color: #871a73;
+  color: #4fc9cf;
   font-size: 0.95rem;
 }
 
 .moment-popup {
   position: relative;
   display: inline-block;
-  background: white;
+  background: #3a3a4d;
+  color: #bfc2d1;
   border-radius: 12px;
   padding: 10px;
   margin-top: 10px;
@@ -490,7 +488,7 @@ body {
     position: static;
     width: 11px;
     height: 11px;
-    background: #be0a9d;
+    background: #7a3cff;
     border-radius: 50%;
     box-shadow: 0 0 4px rgba(0,0,0,0.08);
     border: 2px solid #fff;
@@ -573,7 +571,7 @@ body {
 
 /* Сердечко внизу вертикальной timeline (только для десктопа) */
 .timeline-container::after {
-  content: "🎀";
+  content: "💔";
   display: block;
   position: absolute;
   left: -26px;
@@ -594,19 +592,14 @@ body {
   }
 }
 
-/* ...existing code... */
-
-
-
-
-
 
 
 
 .gift-section {
+  background: #2d2d3a;
+  color: #bfc2d1;
   text-align: center;
   padding: 80px 20px;
-  background: transparent;
   position: relative;
 }
 
@@ -621,7 +614,7 @@ body {
 }
 
 .gift-body {
-  background: linear-gradient(135deg, #ff69b4 70%, #ffd6f6 100%);
+  background: linear-gradient(135deg, #4b4b5e 70%, #7a3cff 100%);
   width: 110px;
   height: 90px;
   border-radius: 5px 5px 16px 16px;
@@ -631,11 +624,11 @@ body {
   bottom: 0;
   transform: translateX(-50%);
   z-index: 1;
-  border: 2px solid #fff0f6;
+  border: 2px solid #3a3a4d;
 }
 
 .gift-lid {
-  background: linear-gradient(90deg, #ff1493 60%, #ffd6f6 100%);
+  background: linear-gradient(90deg, #7a3cff 60%, #4b4b5e 100%);
   width: 120px;
   height: 50px;
   border-radius: 20px 20px 5px 5px;
@@ -645,7 +638,7 @@ body {
   transform: translateX(-50%);
   z-index: 4;
   box-shadow: 0 6px 16px rgba(255, 20, 147, 0.18);
-  border: 2px solid #fff0f6;
+  border: 2px solid #3a3a4d;
   transition: transform 0.6s cubic-bezier(.68,-0.55,.27,1.55), top 0.6s cubic-bezier(.68,-0.55,.27,1.55);
 }
 
@@ -660,10 +653,10 @@ body {
   transform: translateX(-50%);
   top: 47px;
   border-radius: 1px;
-  background: linear-gradient(180deg, #fff 70%, #ffd6f6 100%);
+  background: linear-gradient(180deg, #bfc2d1 70%, #7a3cff 100%);
   position: absolute;
   z-index: 3;
-  box-shadow: 0 0 8px #ffd6f6;
+  box-shadow: 0 0 8px #7a3cff;
 }
 
 .gift-ribbon-horizontal {
@@ -672,10 +665,10 @@ body {
   top: 65%;
   transform: translateY(-40%);
   border-radius: 2px;
-  background: linear-gradient(90deg, #fff 70%, #ffd6f6 100%);
+  background: linear-gradient(90deg, #bfc2d1 70%, #7a3cff 100%);
   position: absolute;
   z-index: 3;
-  box-shadow: 0 0 8px #ffd6f6;
+  box-shadow: 0 0 8px #7a3cff;
   transform: translate(10.8px, -40%);
 
 }
@@ -701,7 +694,7 @@ body {
 
 .gift-popup p {
   font-size: 1.2rem;
-  color: #b6004c;
+  color: #7a3cff;
   font-weight: bold;
 }
 
@@ -713,8 +706,8 @@ body {
 .site-footer {
   width: 100%;
   min-height: 35px;
-  background: linear-gradient(180deg, #fff3f8 0%, #f3eaff 60%, #e9d6ff 100%);
-  color: #7a3cff;
+  background: linear-gradient(180deg, #2d2d3a 0%, #4b4b5e 60%, #7a3cff 100%);
+  color: #bfc2d1;
   text-align: center;
   padding: 18px 0 10px 0;
   font-family: 'Segoe UI', 'Trebuchet MS', sans-serif;
@@ -773,7 +766,8 @@ body {
 }
 
 .site-footer .footer-heart {
-  display: none;
+  display: inline-block;
+  color: #4b4b5e;
 }
 
 /* Для мобильных — текст переносится */
@@ -818,12 +812,12 @@ body {
 
 /* Кнопка "Открыть подарок" */
 #gift-open-btn {
-  background: linear-gradient(135deg, #d77aff, #ff89cb);
+  background: linear-gradient(135deg, #4b4b5e, #7a3cff);
   border: none;
   padding: 11px 26px;
   font-size: 1.1rem;
   border-radius: 21px;
-  color: white;
+  color: #bfc2d1;
   font-weight: bold;
   cursor: pointer;
   box-shadow: 0 6px 16px rgba(212, 124, 240, 0.4);
@@ -834,8 +828,8 @@ body {
 }
 
 #gift-open-btn:hover {
-  background: linear-gradient(135deg, #ff89cb, #d77aff);
-  transform: scale(1.03);
+  background: linear-gradient(135deg, #7a3cff, #4b4b5e);
+  color: #bfc2d1;
 }
 
 /* Контейнер пароля */
@@ -843,9 +837,10 @@ body {
   max-width: 360px;
   margin: 24px auto 0 auto;
   padding: 24px;
-  background: #fdf5ff;
+  background: #3a3a4d;
+  color: #bfc2d1;
   border-radius: 18px;
-  box-shadow: 0 6px 14px rgba(203, 125, 245, 0.2);
+  box-shadow: 0 6px 14px #2a003688;
   text-align: center;
   font-family: 'Segoe UI', Tahoma, sans-serif;
   display: none;
@@ -857,24 +852,24 @@ body {
   padding: 12px 16px;
   font-size: 1rem;
   border-radius: 12px;
-  border: 2px solid #e3c1f1;
+  border: 2px solid #7a3cff;
   outline: none;
   box-shadow: inset 0 2px 6px rgba(213, 132, 255, 0.1);
-  color: #5e2a84;
-  background-color: #ffffff;
+  color: #bfc2d1;
+  background-color: #2d2d3a;
   margin-bottom: 10px;
   transition: border-color 0.3s;
 }
 
 #gift-password:focus {
-  border-color: #c94fcf;
+  border-color: #4fc9cf;
 }
 
 /* Кнопка подтверждения */
 #submit-password {
   padding: 12px 24px;
-  background: #c94fcf;
-  color: white;
+  background: linear-gradient(135deg, #4b4b5e, #7a3cff);
+  color: #bfc2d1;
   border: none;
   border-radius: 14px;
   font-weight: bold;
@@ -885,14 +880,15 @@ body {
 }
 
 #submit-password:hover {
-  background: #ed45cb;
+  background: linear-gradient(135deg, #7a3cff, #4b4b5e);
+  color: #bfc2d1;
 }
 
 /* Сообщение об ошибке */
 #error-message {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #ee0808;
+  color: #4fc9cf;
   margin-top: 8px;
 }
 
@@ -901,8 +897,8 @@ body {
   text-align: center;
   font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
   font-weight: 700;
-  color: #d875aa;
-  background: linear-gradient(135deg, #ffe4ec 60%, #fceaff 100%);
+  color: #7a3cff;
+  background: linear-gradient(135deg, #3a3a4d 60%, #4b4b5e 100%);
   border-radius: 22px;
   padding: 32px 18px;
   box-shadow: 0 2px 18px rgba(212, 124, 240, 0.13), inset 0 0 14px rgba(201, 79, 207, 0.09);
@@ -911,7 +907,7 @@ body {
   display: none;
   font-size: 1.18rem;
   letter-spacing: 0.5px;
-  border: 2px solid #ffd6f6;
+  border: 2px solid #7a3cff;
 }
 
 /* Сообщение для второго подарка */
@@ -919,8 +915,8 @@ body {
   text-align: center;
   font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
   font-weight: 700;
-  color: #4fc9cf;
-  background: linear-gradient(135deg, #e0faff 60%, #eafffa 100%);
+  color: #bfc2d1;
+  background: linear-gradient(135deg, #2d2d3a 60%, #4fc9cf 100%);
   border-radius: 22px;
   padding: 32px 18px;
   box-shadow: 0 2px 18px rgba(79, 201, 207, 0.13), inset 0 0 14px rgba(79, 201, 207, 0.09);
@@ -929,7 +925,7 @@ body {
   display: none;
   font-size: 1.18rem;
   letter-spacing: 0.5px;
-  border: 2px solid #b6f6ff;
+  border: 2px solid #4fc9cf;
 }
 
 /* Темная тема для второго блока */
@@ -1131,42 +1127,42 @@ body {
   color: #ffb6e6;
 }
 [data-theme="dark"] #gift-open-btn {
-  background: linear-gradient(135deg, #d77aff, #ff89cb);
-  color: #2a0036;
+  background: linear-gradient(135deg, #4b4b5e, #7a3cff);
+  color: #bfc2d1;
 }
 [data-theme="dark"] #gift-open-btn:hover {
-  background: linear-gradient(135deg, #ff89cb, #d77aff);
-  color: #2a0036;
+  background: linear-gradient(135deg, #7a3cff, #4b4b5e);
+  color: #bfc2d1;
 }
 [data-theme="dark"] #password-container {
-  background: #3a0a3a;
-  color: #ffe4f1;
+  background: #3a3a4d;
+  color: #bfc2d1;
   box-shadow: 0 6px 14px #2a003688;
 }
 [data-theme="dark"] #gift-password {
-  background-color: #2a0036;
-  color: #ffe4f1;
-  border: 2px solid #d77aff;
+  background-color: #2d2d3a;
+  color: #bfc2d1;
+  border: 2px solid #7a3cff;
 }
 [data-theme="dark"] #gift-password:focus {
-  border-color: #ff89cb;
+  border-color: #4fc9cf;
 }
 [data-theme="dark"] #submit-password {
-  background: linear-gradient(135deg, #d77aff, #ff89cb);
-  color: #2a0036;
+  background: linear-gradient(135deg, #4b4b5e, #7a3cff);
+  color: #bfc2d1;
 }
 [data-theme="dark"] #submit-password:hover {
-  background: linear-gradient(135deg, #ff89cb, #d77aff);
-  color: #2a0036;
+  background: linear-gradient(135deg, #7a3cff, #4b4b5e);
+  color: #bfc2d1;
 }
 [data-theme="dark"] #error-message {
-  color: #ff89cb;
+  color: #4fc9cf;
 }
 [data-theme="dark"] #gift-message {
-  background: linear-gradient(135deg, #3a0a3a 60%, #4d1a4d 100%);
-  color: #ffb6e6;
-  border: 2px solid #d77aff;
-  box-shadow: 0 2px 18px #2a003688, inset 0 0 14px #d77aff33;
+  background: linear-gradient(135deg, #3a3a4d 60%, #4b4b5e 100%);
+  color: #7a3cff;
+  border: 2px solid #7a3cff;
+  box-shadow: 0 2px 18px #2d2d3a88, inset 0 0 14px #7a3cff33;
 }
 [data-theme="dark"] .site-footer {
   background: linear-gradient(90deg, #2a0036 0%, #3a0a3a 100%);

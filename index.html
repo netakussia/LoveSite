@@ -3,384 +3,362 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Для тебя ❤️</title>
+  <title>Воспоминания — Коля и Ирина</title>
+  <meta name="description" content="Личный сайт воспоминаний о прошлом. Грустные моменты, ностальгия, история отношений Коли и Ирины, которые остались только в памяти." />
+  <meta name="keywords" content="воспоминания, грусть, ностальгия, отношения, прошлое, история, личное, память, Коля, Ирина" />
+  <meta name="author" content="Коля & Ирина" />
+  <meta property="og:title" content="Воспоминания — Коля и Ирина" />
+  <meta property="og:description" content="Грустный сайт о том, что осталось только в памяти. История Коли и Ирины." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/moment1.jpg" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Воспоминания — Коля и Ирина",
+      "description": "Грустные воспоминания, история отношений Коли и Ирины, которые остались только в памяти.",
+      "url": "https://netakussia.github.io/LoveSite/",
+      "author": {
+        "@type": "Person",
+        "name": "Коля"
+      },
+      "about": {
+        "@type": "Person",
+        "name": "Ирина"
+      }
+    }
+  </script>
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/x-icon" href="favicon_v2.ico?v=2">
   <script defer src="script.js"></script>
 </head>
 <body>
-  <button id="theme-toggle" title="Переключить тему" aria-label="Переключить тему">🌙</button>
+  <button id="theme-toggle" title="Переключить тему" aria-label="Переключить тему">🌑</button>
 
- <!-- ЭКРАН ЗАГРУЗКИ -->
-<div id="preloader">
-  <div class="loader-text" id="loaderText">Загрузка любви...</div>
-</div>
-
-
-
+  <!-- ЭКРАН ЗАГРУЗКИ -->
+  <div id="preloader">
+    <div class="loader-text" id="loaderText">Воспоминания загружаются...</div>
+  </div>
 
   <!-- Главный экран / Приветствие -->
   <header id="hero">
-    <h1>С 4 месяца нас, любимая ❤️</h1>
-    <p>Подарок только для тебя))</p>
+    <h1>Всё осталось в прошлом...</h1>
+    <p>Этот сайт — напоминание о том, что было когда-то важно.</p>
+
   </header>
-<canvas id="hearts-canvas"></canvas>
-
-
+  <canvas id="hearts-canvas"></canvas>
 
   <!-- Счётчик дней -->
- <section class="counter-section">
-  <h2>Мы вместе</h2>
-  <div class="day-counter" id="dayCounter">...</div>
-  <p class="since-text">с 3 мая 2025 💞</p>
-</section>
+  <section class="counter-section">
+    <h2>С тех пор прошло</h2>
+    <div class="day-counter" id="dayCounter">...</div>
+    <p class="since-text">с 3 мая 2025 🕯</p>
+  </section>
 
+  <!-- Симуляция чата -->
+  <section id="chat-section" class="chat-section">
+    <div class="chat-container">
+      <div class="message bot typing-indicator" id="typing-indicator">Печатает<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></div>
+      <div id="chat-messages"></div>
+    </div>
+  </section>
 
- <!-- Симуляция чата -->
-<section id="chat-section" class="chat-section">
-  <div class="chat-container">
-    <div class="message bot typing-indicator" id="typing-indicator">Печатает<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></div>
-    <div id="chat-messages"></div>
-  </div>
-</section>
+  <!-- Галерея воспоминаний -->
+  <section class="moments-timeline">
+    <h2 class="timeline-title">🕰 Воспоминания</h2>
+    <div style="max-width:600px;margin:0 auto 24px auto;color:#7a3cff;font-size:1.08em;">
+      История Коли и Ирины. Всё, что осталось — это память о моментах, которые уже не повторятся.
+    </div>
+    <div class="timeline-container">
+      <!-- Момент  -->
+      <div class="timeline-item">
+        <div class="timeline-date">17.04.2025</div>
+        <div class="timeline-dot"></div>
+        <div class="moment-popup">
+          <div class="moment-popup-img-wrap">
+            <img src="images/moment7-perviipodarok!!!!.jpg" alt="Торт, который был началом, теперь только память о первом шаге">
+          </div>
+          <p>Когда-то был повод улыбнуться. Сейчас — повод вздохнуть.</p>
+        </div>
+      </div>
+      <!-- Момент 1 -->
+      <div class="timeline-item">
+        <div class="timeline-date">30.04.2025</div>
+        <div class="timeline-dot"></div>
+        <div class="moment-popup">
+          <div class="moment-popup-img-wrap">
+            <img src="images/moment1.jpg" alt="Два человека рядом, но теперь между ними расстояние">
+          </div>
+          <p>В тот вечер казалось, что всё впереди. Теперь — всё позади.</p>
+        </div>
+      </div>
+      <!-- Момент 2 -->
+      <div class="timeline-item">
+        <div class="timeline-date">01.05.2025</div>
+        <div class="timeline-dot"></div>
+        <div class="moment-popup">
+          <div class="moment-popup-img-wrap">
+            <img src="images/moment20-pikmikolya.jpg" alt="Селфи, где улыбки были настоящими, а теперь осталась только грусть">
+          </div>
+          <p>Счастье было так близко, но теперь оно только на фото.</p>
+        </div>
+      </div>
+      <!-- Момент 3 -->
+      <div class="timeline-item">
+        <div class="timeline-date">03.05.2025</div>
+        <div class="timeline-dot"></div>
+        <div class="moment-popup">
+          <div class="moment-popup-img-wrap">
+            <img src="images/moment17-glaza.jpg" alt="Взгляд, который больше не встретишь, только вспоминаешь">
+          </div>
+          <p>Те глаза, которые теперь только в памяти. Больше не встретятся.</p>
+        </div>
+      </div>
+      <!-- Момент 4 -->
+      <div class="timeline-item">
+        <div class="timeline-date">03.05.2025</div>
+        <div class="timeline-dot"></div>
+        <div class="moment-popup">
+          <div class="moment-popup-img-wrap">
+            <img src="images/moment10-vstrechata.jpg" alt="Руки, которые когда-то держали друг друга, теперь отпущены навсегда">
+          </div>
+          <p>Тогда казалось, что навсегда. Оказалось — нет. Осталась только тишина.</p>
+        </div>
+      </div>
+      <!-- Момент 5 -->
+      <div class="timeline-item">
+        <div class="timeline-date">07.05.2025</div>
+        <div class="timeline-dot"></div>
+        <div class="moment-popup">
+          <div class="moment-popup-img-wrap">
+            <img src="images/moment9-pervoepriznanie.jpg" alt="Улыбка, которая согревала, теперь только на фотографии">
+          </div>
+          <p>Первое признание, первая искренность. Теперь — только воспоминание о тепле.</p>
+        </div>
+      </div>
+      <!-- Момент 6 -->
+      <div class="timeline-item">
+        <div class="timeline-date">07.05.2025</div>
+        <div class="timeline-dot"></div>
+        <div class="moment-popup">
+          <div class="moment-popup-img-wrap">
+            <img src="images/moment6-ily.jpg" alt="Доброе утро, которое больше не повторится">
+          </div>
+          <p>Твоё первое «доброе утро»… теперь утро начинается без тебя.</p>
+        </div>
+      </div>
+      <!-- Момент 7 -->
+      <div class="timeline-item">
+        <div class="timeline-date">09.05.2025</div>
+        <div class="timeline-dot"></div>
+        <div class="moment-popup">
+          <div class="moment-popup-img-wrap">
+            <img src="images/moment4.jpg" alt="Улыбка, за которой теперь только грусть">
+          </div>
+          <p>Ты говорила, что я — как никто другой. Теперь мы — как все, кто расстался.</p>
+        </div>
+      </div>
+      <!-- Момент 8 -->
+      <div class="timeline-item">
+        <div class="timeline-date">12.05.2025</div>
+        <div class="timeline-dot"></div>
+        <div class="moment-popup">
+          <div class="moment-popup-img-wrap">
+            <img src="images/moment12-sisi.jpg" alt="Озеро, тишина, одиночество вместо тепла">
+          </div>
+          <p>Тот день у озера был особенным. Теперь — просто часть прошлого.</p>
+        </div>
+      </div>
+      <!-- Момент 9 -->
+      <div class="timeline-item">
+        <div class="timeline-date">13.05.2025</div>
+        <div class="timeline-dot"></div>
+        <div class="moment-popup">
+          <div class="moment-popup-img-wrap">
+            <img src="images/moment11-prikolina.jpg" alt="Язык, который был смешным, теперь не вызывает улыбки">
+          </div>
+          <p>Когда-то это было смешно. Сейчас — просто странно вспоминать.</p>
+        </div>
+      </div>
+      <!-- Момент 10 -->
+      <div class="timeline-item">
+        <div class="timeline-date">25.05.2025</div>
+        <div class="timeline-dot"></div>
+        <div class="moment-popup">
+          <div class="moment-popup-img-wrap">
+            <img src="images/moment8-parniee avi.jpg" alt="Аватары, которые были вместе, теперь разделены">
+          </div>
+          <p>Аватары целуются, а мы — нет. Осталась только картинка.</p>
+        </div>
+      </div>
+      <!-- Момент 11 -->
+      <div class="timeline-item">
+        <div class="timeline-date">30.05.2025</div>
+        <div class="timeline-dot"></div>
+        <div class="moment-popup">
+          <div class="moment-popup-img-wrap">
+            <img src="images/moment16-pikmi.jpg" alt="Селфи, где было счастье, теперь только память">
+          </div>
+          <p>Первое совместное фото. Теперь альбом закрыт навсегда.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">31.05.2025</div>
+        <div class="timeline-dot"></div>
+        <div class="moment-popup">
+          <div class="moment-popup-img-wrap">
+            <img src="images/moment18-mi.jpg" alt="Селфи, где было много смеха, теперь только тишина">
+          </div>
+          <p>Было много фото, много смеха. Теперь — только пустота.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">11.06.2025</div>
+        <div class="timeline-dot"></div>
+        <div class="moment-popup">
+          <div class="moment-popup-img-wrap">
+            <img src="images/moment19-sex.png" alt="Близость, которая больше не повторится">
+          </div>
+          <p>Когда-то это было важно. Теперь — просто часть истории.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">11.06.2025</div>
+        <div class="timeline-dot"></div>
+        <div class="moment-popup">
+          <div class="moment-popup-img-wrap">
+            <img src="images/moment13-frantsuzkii.jpg" alt="Французский язык, который был поводом для встречи, теперь не нужен">
+          </div>
+          <p>Французский язык нас сблизил, но не спас. Осталась только благодарность за опыт.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">11.06.2025</div>
+        <div class="timeline-dot"></div>
+        <div class="moment-popup">
+          <div class="moment-popup-img-wrap">
+            <img src="images/moment21-yazik.jpg" alt="Фото, которое раньше радовало, теперь вызывает только ностальгию">
+          </div>
+          <p>Когда-то эта фотка вызывала улыбку. Теперь — только жажду вернуть то, что не вернуть.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-
-<!-- Галерея воспоминаний -->
-<section class="moments-timeline">
-  <h2 class="timeline-title">📅 Наша история</h2>
-  <div class="timeline-container">
-    <!-- Момент  -->
-    <div class="timeline-item">
-      <div class="timeline-date">17.04.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment7-perviipodarok!!!!.jpg" alt="Торт с надписью для девушки, стоит на столе в домашней обстановке, вокруг мягкий свет, атмосфера радостная и волнительная, на торте написано: для тебя, настроение трогательное и немного застенчивое">
-        </div>
-        <p>всё началось с торта в Тг — первый подарок, первое «я хочу, чтобы ей было приятно»</p>
+  <section class="gift-section">
+    <div id="gift-message-above" class="gift-message-above"></div>
+    <div class="gift-wrapper" onclick="toggleGift()">
+      <div class="gift-lid"></div>
+      <div class="gift-body"></div>
+      <div class="gift-ribbon-vertical"></div>
+      <div class="gift-ribbon-horizontal"></div>
+    </div>
+    <div class="gift-popup hidden" id="giftPopup">
+      <p>Всё, что осталось — воспоминания.</p>
+      <img id="ring-img" src="images/Broken_heart.svg.png" alt="Heart" />
+      <div class="proposal-buttons">
+        <button id="yes-btn" class="proposal-yes">Понять</button>
+        <button id="no-btn" class="proposal-no">Забыть</button>
       </div>
     </div>
-    <!-- Момент 1 -->
-    <div class="timeline-item">
-      <div class="timeline-date">30.04.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment1.jpg" alt="Два человека стоят рядом на улице, держатся за руки, вокруг вечерний городской пейзаж, свет фонарей отражается на мокром асфальте, атмосфера спокойная и немного загадочная, лица не полностью видны, настроение ожидания и лёгкого волнения">
-        </div>
-        <p>никто ещё не знал, а уже всё началось</p>
-      </div>
-    </div>
-    <!-- Момент 2 -->
-    <div class="timeline-item">
-      <div class="timeline-date">01.05.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment20-pikmikolya.jpg" alt="Два человека делают селфи, улыбаются и смотрят в камеру, на заднем плане домашняя обстановка, атмосфера радостная и уютная, лица близко друг к другу, настроение счастливое и тёплое">
-        </div>
-        <p>мы просто гуляли, просто играли с тренд… а потом всё стало не «просто»</p>
-      </div>
-    </div>
-    <!-- Добавь свои дальше -->
-     <!-- Момент 3 -->
-     <div class="timeline-item">
-      <div class="timeline-date">03.05.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment17-glaza.jpg" alt="Девушка смотрит прямо в камеру, крупный план её глаз, взгляд открытый и немного застенчивый, вокруг мягкий свет и домашняя атмосфера, настроение трогательное и искреннее">
-        </div>
-        <p>эти глаза я помню с первого взгляда, даже когда ещё не знал, что запомню🫠</p>
-      </div>
-    </div>
-<!-- Момент 4 -->
-    <div class="timeline-item">
-      <div class="timeline-date">03.05.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment10-vstrechata.jpg" alt="Два человека держатся за руки в вечернее время, на фоне городские огни и лёгкая неоновая подсветка, атмосфера романтичная и волнительная, момент первого признания, настроение трепетное и искреннее">
-        </div>
-        <p>тогда, в 22:45, я не просто предложил встречаться… я, по сути, выбрал тебя навсегда</p>
-      </div>
-    </div>
-<!-- Момент 5 -->
-    <div class="timeline-item">
-      <div class="timeline-date">07.05.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment9-pervoepriznanie.jpg" alt="Девушка улыбается, смотрит в камеру с лёгким волнением и радостью, на фоне домашняя обстановка, атмосфера искренняя и тёплая, момент признания в чувствах, настроение трогательное и немного волнительное">
-        </div>
-        <p>первый раз, когда ты открылась по-настоящему... и всё стало ещё теплее внутри</p>
-      </div>
-    </div>
-<!-- Момент 6 -->
-    <div class="timeline-item">
-      <div class="timeline-date">07.05.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment6-ily.jpg" alt="Девушка улыбается, лежит на подушке, лицо расслабленное и счастливое, вокруг мягкий свет и уютная домашняя атмосфера, настроение тёплое и спокойное">
-        </div>
-        <p>твоё первое «доброе утро»… с него начался каждый мой день, где ты — первая мысль</p>
-      </div>
-    </div>
-<!-- Момент 7 -->
-    <div class="timeline-item">
-      <div class="timeline-date">09.05.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment4.jpg" alt="Девушка улыбается и смотрит в камеру, на фоне уютная домашняя обстановка, выражение лица тёплое и немного задумчивое, атмосфера доверительная и нежная">
-        </div>
-        <p>ты сказала, что я — как никто другой, и что страшно… тогда и мне стало страшно — потерять тебя</p>
-      </div>
-    </div>
-<!-- Момент 8 -->
-    <div class="timeline-item">
-      <div class="timeline-date">12.05.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment12-sisi.jpg" alt="Девушка сидит у озера на фоне спокойной воды и зелёных деревьев, смотрит вдаль с лёгкой улыбкой, вокруг солнечный день и тёплая атмосфера уединения, настроение умиротворённое и нежное">
-        </div>
-        <p>тот самый день у озера... солнце, тишина, ты, я… и что-то очень тёплое и мягкое (не вода 😌)</p>
-      </div>
-    </div>
-<!-- Момент 9 -->
-    <div class="timeline-item">
-      <div class="timeline-date">13.05.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment11-prikolina.jpg" alt="Девушка высовывает язык, улыбается и смотрит в камеру, вокруг домашняя обстановка, настроение игривое и тёплое, создаётся ощущение близости и весёлого момента">
-        </div>
-        <p>язык любви — это не румынский, не русский… это вот эта хуйня🙄</p>
-      </div>
-    </div>
-<!-- Момент 10 -->
-    <div class="timeline-item">
-      <div class="timeline-date">25.05.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment8-parniee avi.jpg" alt="Два аватарных изображения с изображением пары, аватары расположены рядом и словно целуются, фон светлый и нейтральный, создаётся ощущение нежности и игривости, визуальный акцент на близости и романтике">
-        </div>
-        <p>наши авы целуются чаще, чем мы — но мы их догоним, честно 😘</p>
-      </div>
-    </div>
-<!-- Момент 11 -->
-    <div class="timeline-item">
-      <div class="timeline-date">30.05.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment16-pikmi.jpg" alt="Два человека делают селфи, оба улыбаются и смотрят в камеру, на заднем плане домашняя обстановка, атмосфера радостная и тёплая, лица близко друг к другу, выражение счастья и уюта">
-        </div>
-        <p>впервые мы сами нажали на "сделать фото" — с этого момента начался наш альбом)))</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">31.05.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment18-mi.jpg" alt="Два человека делают селфи, оба улыбаются и смотрят в камеру, на заднем плане домашняя обстановка, атмосфера радостная и тёплая, лица близко друг к другу, выражение счастья и уюта">
-        </div>
-        <p>уже не одна, а пачка — потому что «давай ещё», «а вот так», «подожди, щас смешно будет»</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">11.06.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment19-sex.png" alt="Два человека в интимной и нежной обстановке, обнимаются в мягком свете, выражая близость и заботу, атмосфера тёплая и наполнена любовью">
-        </div>
-        <p>да, это та самая фотка 👀</p>
-      </div>
-    </div>
- 
-
-<div class="timeline-item">
-      <div class="timeline-date">11.06.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment13-frantsuzkii.jpg" alt="Два человека сидят рядом за столом, один улыбается и смотрит на другого, на столе тетради и учебник французского, вокруг домашняя уютная атмосфера, настроение тёплое и немного озорное, на тетради написано: французский язык">
-        </div>
-        <p>всё началось с "что задали по французскому?", а закончилось... ну, ты знаешь 😏 ебаный французский, спасибо тебе, блять</p>
-      </div>
-    </div>
-  
-
-<div class="timeline-item">
-      <div class="timeline-date">11.06.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment21-yazik.jpg" alt="A person playfully sticking out their tongue in a lighthearted moment, surrounded by a cozy indoor setting, conveying a fun and affectionate mood">
-        </div>
-        <p>эта фотка у меня вызывает жажду жизни и не только… ты там такая мммм, аж зависнуть можно 🥵</p>
-      </div>
-    </div>
-  
-
-</section>
-
-  
-
-
-
- 
-
- <section class="gift-section">
-  <div id="gift-message-above" class="gift-message-above"></div>
-  <div class="gift-wrapper" onclick="toggleGift()">
-    <div class="gift-lid"></div>
-    <div class="gift-body"></div>
-    <div class="gift-ribbon-vertical"></div>
-    <div class="gift-ribbon-horizontal"></div>
-  </div>
-  <div class="gift-popup hidden" id="giftPopup">
-    <p>Оно ждёт только одного ответа...</p>
-    <img id="ring-img" src="images/ringbox.png" alt="Heart" />
-    <div class="proposal-buttons">
-      <button id="yes-btn" class="proposal-yes">Да</button>
-      <button id="no-btn" class="proposal-no">Нет</button>
-    </div>
-  </div>
-</section>
-
-
+  </section>
 
   <!-- Секретный раздел с паролем -->
-<button id="gift-open-btn">Открыть🙄</button>
+  <button id="gift-open-btn">Открыть воспоминания</button>
 
-<div id="password-container" style="display:none; margin-top: 20px;">
-  <input id="gift-password" type="password" placeholder="Вводи пупс💋" />
-  <button id="submit-password">Оке🎀</button>
-  <div id="error-message" style="color: red; margin-top: 5px; display:none;"></div>
-</div>
+  <div id="password-container" style="display:none; margin-top: 20px;">
+    <input id="gift-password" type="password" placeholder="Введи слово из прошлого" />
+    <button id="submit-password">Показать</button>
+    <div id="error-message" style="color: red; margin-top: 5px; display:none;"></div>
+  </div>
 
-<div id="gift-message" style="display:none; margin-top: 20px; font-size: 1.2rem; color: #c94fcf;">
-Пришло время сказать всё.
+  <div id="gift-message" style="display:none; margin-top: 20px; font-size: 1.2rem; color: #c94fcf;">
+    Когда-то это было важно. Сейчас — просто часть истории.
 
-Наверное, это должно было случиться. Не потому что что-то закончилось, а наоборот — потому что многое началось. Иногда нужно остановиться, глубоко вдохнуть и честно проговорить всё, что внутри. Не на эмоциях, не в спешке, а спокойно и по-настоящему. Сейчас именно такой момент. Мне хочется подытожить всё, что мы прожили, и рассказать, что для меня значит мы.
+    Всё, что осталось — воспоминания, которые уже не вернуть. Иногда хочется повернуть время назад, но прошлое не меняется. Мы были близки, были счастливы, но теперь каждый идёт своей дорогой.
 
-Всё началось не просто с фразы или случайного интереса. Это всё как будто росло изнутри. Сначала медленно, неуверенно, с попытками понять друг друга. А потом как будто в нас щёлкнуло. Мы не просто начали встречаться — мы начали быть. Ты появилась в моей жизни, и всё будто обретает смысл. С того самого начала, когда было немного неловко, но уже тогда — тепло. Уже тогда я начал видеть, что ты — моя девочка.
+    Спасибо за всё, что было. За моменты радости, за тепло, за то, что когда-то были друг для друга всем. Пусть эти воспоминания останутся светлым пятном в жизни, даже если теперь они приносят только грусть.
 
-Ты была моей первой во всём. Первый поцелуй, первый раз — вообще первый, в жизни, у нас обоих. Не просто физически — в этом был смысл, был момент, было что-то особенное. Я помню всё. И не потому что у меня хорошая память (ты знаешь, как с ней у меня), а потому что ты важна. Я часто забываю, что ты мне говорила, когда дело касалось каких-то мелочей. Но я не забываю, когда ты была рядом, как ты смотрела, как ты держала меня, как улыбалась — в такие моменты я живу.
+    Прощай.
+  </div>
 
-Третий месяц был сложным. Мы были на расстоянии. я уехал, ты осталась((((((((. И всё вроде как на связи, но ощущение — будто без тебя как-то не дышится. Это тест на прочность. И я чувствовал, что мне не хватает тебя — твоего голоса, твоих рук, даже твоих шуток. Ты — моя любимая, даже когда злишься или молчишь. Особенно тогда, когда молчишь — потому что даже в тишине я чувствую тебя рядом. А ещё я просто пиздец как жду осень. Потому что школа — это не просто «начнётся учеба», это значит, что я буду тебя видеть, и не в экране, а вживую. Это единственное, что действительно меня радует в приближении осени.
+  <div id="gift-message-2" style="display:none; margin-top: 20px; font-size: 1.2rem; color: #4fc9cf;">
+    Иногда кажется, что можно всё вернуть, но это лишь иллюзия. Всё, что осталось — воспоминания, которые уже не греют.
 
-Что я чувствую? Наверное, слишком много. Иногда мне сложно уложить это в слова. Мне хочется быть рядом, держать тебя за руку. Не как пафосный жест из кино, а просто — потому что мне с тобой спокойно. Мне хочется, чтобы ты знала: даже когда я косячу, даже когда не понимаю, даже когда молчу — я тебя люблю. Люблю так, как не умел раньше. Потому что раньше просто не было тебя.
+    Спасибо за то, что когда-то были вместе. Пусть впереди будет свет, даже если сейчас только тень прошлого.
+  </div>
 
-Мне нравится, когда ты зовёшь меня хорошеньким. Я не всегда это показываю, но внутри у меня там что-то сжимается от нежности. А когда я тебя называю своей девочкой — это не просто милота. Это правда. Ты — моя. И не в смысле собственности, а в смысле близости. Ты — та, с кем мне не хочется ничего скрывать.
-
-У меня нет сложных планов. Пока моё главное желание — чаще видеть тебя. Хочу чтобы мы просто проводили больше времени вместе. А ещё, если честно… я очень хочу, чтобы мы поспали вместе. Не про секс сейчас — а просто лечь рядом, обнять, и знать, что ты здесь. Что не исчезнешь, не растворишься, не уйдёшь в себя. Чтобы ночь была не пустой, а полной тебя.
-
-А дальше? Дальше мечта. Простая, но сильная: пожениться и умереть в один день. Не хочу уходить, если тебя рядом нет. Хочу прожить с тобой всё, что только можно. Разное. Лёгкое и тяжёлое. Радость, усталость, веселье, ссоры, примирения. Я знаю, что мы не идеальные. Да и нахуй быть идеальными. Главное — быть вместе.
-И да, если говорить про мечты, то они уже давно не про «одиночное счастье». Всё, чего я хочу дальше — это ты рядом. Хочу, чтобы у нас была настоящая жизнь. Чтобы когда-нибудь у нас были детишки, такие же упрямые и смешные, как ты, или такие же влюбчивые и мечтательные, как я. Представь, как ты будешь их одевать, а я жаловаться, что они опять пролили сок на диван. Мы будем уставать, ржать, обниматься, и всё это — вместе. Это не просто мечта. Это моя цель.
-
-Ты красивая. Просто запомни это. Даже когда не веришь в себя. Даже когда в пижаме и с растрёпанными волосами. Даже когда злишься и делаешь вид, что тебе всё нормально. Я всё равно вижу тебя — и думаю: «бля, ну вот она, мая девачка».
-
-Я не всегда умею говорить. Иногда туплю, иногда переживаю, иногда делаю вид, что всё в порядке. Но это не значит, что мне всё равно. Это значит, что мне очень не всё равно. Просто я — такой. А ты — ты. И это охуенное сочетание.
-
-Мы ещё многое пройдём. Я не знаю, что будет завтра. Но если ты рядом — мне уже не страшно. Я тебя люблю. Сильно. Настояще. До мурашек. До злости. До радости. До конца.
-
-И знаешь что?.. Спасибо тебе, девочка моя. За то, что ты — есть.
-И в конце, наверное, самое важное — я люблю тебя. Не просто «я тебя люблю», как шаблон, а вот так — без остатка, по-настоящему, в каждый день, в каждый твой взгляд, в каждый момент, когда тебя нет рядом, и в каждый момент, когда ты есть. Люблю, как воздух, как сон после долгого дня, как песню, которую можно слушать вечно. Ты — моя девочка, моё солнышко, моё всё.
-
-И я верю, что мы пройдём вместе всё — и дождь, и солнце, и школы, и переезды, и усталость, и радость, и свадьбу, и долгую жизнь, где мы состаримся вместе… и когда-нибудь, как и мечталось — умрём в один день. Но пока до этого далеко, у нас впереди целая история. И, блять, я готов пройти её с тобой до конца.
-</div>
-
-<div id="gift-message-2" style="display:none; margin-top: 20px; font-size: 1.2rem; color: #4fc9cf;">
-Я не могу поверить, что мы снова вместе, что после всех этих дней и моментов непонимания мы смогли вернуться друг к другу. 
-Это ощущение будто весь мир снова стал ярче, будто каждая минута без тебя была подготовкой к тому, чтобы ценить тебя ещё сильнее. 
-Я хочу, чтобы ты знала, что каждый смех, каждый взгляд, каждый момент рядом с тобой для меня бесценен. 
-Ты даришь мне радость, тепло и любовь, которых я никогда не хотел отпускать. Я люблю тебя всем сердцем, всей душой, и каждый день с тобой ощущается как чудо. 
-То, что мы смогли пройти через трудности и снова найти друг друга, только делает нашу связь сильнее, и я обещаю беречь это чувство, нашу близость и каждое мгновение, которое мы проводим вместе.
-Ты — моя радость, моя поддержка, моя любовь, и я счастлив, что мы снова «мы».
-Поздравляю нас с этим новым этапом в нашей истории. Я верю, что впереди у нас ещё много счастливых дней, наполненных любовью и взаимопониманием. Спасибо тебе за то, что ты есть в моей жизни, и за то, что мы снова вместе. Я люблю тебя.
-С 4 месяцами нас, любимая ❤️
-</div>
-
-<canvas id="confetti-canvas" style="position: fixed; top: 0; left: 0; pointer-events: none; display: none;"></canvas>
-
-
+  <canvas id="confetti-canvas" style="position: fixed; top: 0; left: 0; pointer-events: none; display: none;"></canvas>
 
   <!-- Кнопка включения музыки -->
- <div class="music-player">
-  <audio id="bg-music" loop>
-    <source src="music/papin-olimpos-eto-lyubov-2018.mp3" type="audio/mpeg">
-    <source src="music/second-song.mp3" type="audio/mpeg">
-    Ваш браузер не поддерживает аудио.
-  </audio>
-  <button id="play-btn" aria-label="Play music">▶</button>
-  <button id="next-btn" aria-label="Next song"> ⏭ </button>
-</div>
+  <div class="music-player">
+    <audio id="bg-music" loop>
+      <source src="music/Вышел покурить & ooes - Помнишь ли ты меня.mp3" type="audio/mpeg">
+      <source src="music/ЩЕНКИ - Грязь.mp3" type="audio/mpeg">
+      Ваш браузер не поддерживает аудио.
+    </audio>
+    <button id="play-btn" aria-label="Play music">▶</button>
+    <button id="next-btn" aria-label="Next song"> ⏭ </button>
+  </div>
 
+  <script>
+    const music = document.getElementById("bg-music");
+    const btn = document.getElementById("play-btn");
+    const nextBtn = document.getElementById("next-btn");
 
-<script>
-  const music = document.getElementById("bg-music");
-  const btn = document.getElementById("play-btn");
-  const nextBtn = document.getElementById("next-btn");
+    // Список треков
+    const tracks = [
+      "music/Вышел покурить & ooes - Помнишь ли ты меня.mp3",
+      "music/ЩЕНКИ - Грязь.mp3"
+    ];
+    let currentTrack = 0;
+    let isPlaying = false;
 
-  // Список треков
-  const tracks = [
-    "music/papin-olimpos-eto-lyubov-2018.mp3",
-    "music/Рем Дигга - Тринадцатый.mp3"
-  ];
-  let currentTrack = 0;
-  let isPlaying = false;
-
-  function setTrack(idx) {
-    music.src = tracks[idx];
-    music.load();
-    if (isPlaying) {
-      music.play();
+    function setTrack(idx) {
+      music.src = tracks[idx];
+      music.load();
+      if (isPlaying) {
+        music.play();
+      }
     }
-  }
 
-  btn.addEventListener("click", () => {
-    if (!isPlaying) {
-      music.play();
-      btn.textContent = "⏸";
-    } else {
-      music.pause();
-      btn.textContent = "▶";
-    }
-    isPlaying = !isPlaying;
-  });
+    btn.addEventListener("click", () => {
+      if (!isPlaying) {
+        music.play();
+        btn.textContent = "⏸";
+      } else {
+        music.pause();
+        btn.textContent = "▶";
+      }
+      isPlaying = !isPlaying;
+    });
 
-  nextBtn.addEventListener("click", () => {
-    currentTrack = (currentTrack + 1) % tracks.length;
-    setTrack(currentTrack);
-    btn.textContent = "⏸";
-    isPlaying = true;
-  });
-
-  // При окончании трека — следующий (если не loop)
-  music.addEventListener("ended", () => {
-    if (!music.loop) {
+    nextBtn.addEventListener("click", () => {
       currentTrack = (currentTrack + 1) % tracks.length;
       setTrack(currentTrack);
-    }
-  });
-</script>
+      btn.textContent = "⏸";
+      isPlaying = true;
+    });
+
+    // При окончании трека — следующий (если не loop)
+    music.addEventListener("ended", () => {
+      if (!music.loop) {
+        currentTrack = (currentTrack + 1) % tracks.length;
+        setTrack(currentTrack);
+      }
+    });
+  </script>
 
 
-<script src="script.js" defer></script>
+  <script src="script.js" defer></script>
 
-<footer class="site-footer">
-  <div class="footer-content">
-    <span class="footer-heart" aria-hidden="true">💜</span>
-    <span class="footer-love">Сделано с любовью для самой любимой 💖</span>
-    <span class="footer-date">&copy; 2025 — <span style="color:#b46cff;">LoveStory</span></span>
-  </div>
-</footer>
+  <footer class="site-footer">
+    <div class="footer-content">
+      <span class="footer-heart" aria-hidden="true">🖤</span>
+      <span class="footer-love">Сайт воспоминаний о прошлом</span>
+      <span class="footer-sign" style="color:#7a3cff;">Коля & Ирина</span>
+      <span class="footer-date">&copy; 2025 — <span style="color:#7a3cff;">Memory</span></span>
+    </div>
+  </footer>
 </body>
 </html>

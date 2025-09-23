@@ -10,7 +10,7 @@ window.addEventListener("resize", () => {
 })
 
 const hearts = []
-const colors = ["#ffc0cb", "#ffb6c1", "#ff69b4", "#ff4d6d", "#c94fcf", "#ffccd5"]
+const colors = ["#7a3cff", "#4b4b5e", "#4fc9cf", "#bfc2d1", "#6a6a7d", "#2d2d3a"]
 
 function createHeart() {
   const size = Math.random() * 20 + 10
@@ -64,23 +64,23 @@ animate()
 
 const loaderText = document.getElementById("loaderText")
 const phrases = [
-  "Загрузка любви...",
-  "Связываемся с сердцем...",
-  "Ожидаем поцелуй...",
-  "Синхронизация воспоминаний...",
-  "Подключение к любимой...",
-  "Анализ обнимашек...",
-  "Обновление чувств...",
-  "Кэшируем нежность...",
-  "Запуск бабочек в животе...",
-  "Шифруем взгляды...",
-  "Устанавливаем связь душ...",
-  "Обнаружена любовь — соединяем...",
-  "Инициализация романтики...",
-  "Передаём тепло касаний...",
-  "Подготовка сюрпризов...",
-  "Вспоминаем первые «я тебя люблю»...",
-  "Сохраняем моменты счастья..."
+  "Воспоминания загружаются...",
+  "Собираем осколки прошлого...",
+  "Пытаемся вспомнить, как всё было...",
+  "Грусть по ушедшему...",
+  "Время не вернуть...",
+  "Сохраняем моменты, которые уже не повторятся...",
+  "Память о том, что было важно...",
+  "Сердце больше не откликается...",
+  "Тишина вместо слов...",
+  "Потерянные надежды...",
+  "Всё осталось в прошлом...",
+  "Воспоминания — всё, что осталось...",
+  "Собираем тени былого...",
+  "Пытаемся отпустить...",
+  "Прощаемся с мечтами...",
+  "Время лечит, но не забывает...",
+  "Сохраняем грусть..."
 ]
 
 let index = 0
@@ -117,7 +117,7 @@ function updateDayCounter() {
   // Считаем разницу в днях
   const diffTime = now - startDate;
   const days = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1; // +1 чтобы включить первый день
-  counter.textContent = `${days} ${pluralizeDays(days)}`;
+  counter.textContent = `${days} ${pluralizeDays(days)} прошло`;
 }
 
 function pluralizeDays(n) {
@@ -139,19 +139,19 @@ const chatMessages = document.getElementById("chat-messages");
 const typingIndicator = document.getElementById("typing-indicator");
 
 const messages = [
-  "Привет, любовь моя ❤️",
-  "Знаешь, я хотел бы начать этот сайт с чего-то простого, но настоящего",
-  "Ты — причина, по которой я улыбаюсь без причины 🥺",
-  "Спасибо за эти чудесные 3 месяца 🌸",
-  "А теперь... погнали дальше 😉",
-  "Ты — моя вселенная в человеческом виде ✨",
-  "Каждая минута с тобой — как отдельная глава сказки 📖",
-  "Иногда я просто сижу и думаю, как же мне повезло с тобой 🥹",
-  "Если бы я мог, я бы закрыл тебя в объятиях навсегда 🤍",
-  "У нас ещё столько впереди... и всё это — вместе 🤝",
-  "Даже в плохие дни ты — моё самое светлое 🌙",
-  "Люблю тебя так, что слова не справляются 💬❤️",
-  "Этот сайт — не просто сюрприз, а отражение моей любви к тебе 💌"
+  "Привет...",
+  "Когда-то здесь была радость, теперь — только воспоминания.",
+  "Всё изменилось, и мы стали чужими.",
+  "Спасибо за то, что было. Жаль, что всё закончилось.",
+  "Иногда хочется вернуть прошлое, но это невозможно.",
+  "Ты была частью моей жизни, теперь — только частью памяти.",
+  "Каждый момент с тобой был важен, теперь они просто грустные главы.",
+  "Я часто думаю, как всё могло быть иначе.",
+  "Объятия, которые больше не повторятся.",
+  "Впереди — неизвестность, а позади — только тени.",
+  "Даже в самые светлые дни теперь чувствуется пустота.",
+  "Любовь ушла, осталась только грусть.",
+  "Этот сайт — напоминание о том, что когда-то было важно."
 ];
 
 
@@ -252,7 +252,7 @@ const errorMessage = document.getElementById('error-message');
 const giftMessage = document.getElementById('gift-message');
 const confettiCanvas = document.getElementById('confetti-canvas');
 
-const correctPassword = 'сучка'; // Твой пароль
+const correctPassword = 'сучка'; // Новый пароль
 let confettiStarted = false;
 
 giftBtn.addEventListener('click', () => {
@@ -269,7 +269,7 @@ submitPasswordBtn.addEventListener('click', () => {
     passwordContainer.style.display = 'none';
     showGiftMessage();
   } else {
-    errorMessage.textContent = 'Не те букавки солнышко, попробуй ещё☺️';
+    errorMessage.textContent = 'Не те буквы, попробуй ещё';
     errorMessage.style.display = 'block';
     shake(passwordContainer);
   }
@@ -316,7 +316,7 @@ function startConfetti() {
 
   let animationFrameId;
   let confettiTime = 0;
-  const maxConfettiTime = 8000; // показывать конфети 8 секунд
+  // показывать конфети 8 секунд
 
   function draw() {
     ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
@@ -482,7 +482,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // "Да" — показать надпись и кольцо
   if (yesBtn && noBtn && ringImg && msgAbove) {
     yesBtn.addEventListener('click', function (e) {
-      msgAbove.textContent = "Официально — ты моя жена в душе 💍";
+      msgAbove.textContent = "Были прикольные времена";
       msgAbove.classList.add('active');
       ringImg.classList.add('active');
     });
@@ -538,10 +538,10 @@ document.getElementById('submit-password').onclick = function() {
 
   if (password === 'сучка') {
     msg1.style.display = 'block';
-  } else if (password === 'любоф') {
+  } else if (password === 'сучка2') {
     msg2.style.display = 'block';
   } else {
-    error.textContent = 'Неверный пароль!';
+    error.textContent = 'Неверное слово. Это уже не то, что было.';
     error.style.display = 'block';
   }
 };
