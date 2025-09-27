@@ -815,6 +815,113 @@ body {
   color: #ffb6e6;
 }
 
+/* Стили для секретных постов */
+.secret-post-card {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 15px;
+  padding: 25px;
+  margin: 20px 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 2px solid #c94fcf;
+  position: relative;
+  overflow: hidden;
+  animation: secretPostAppear 0.6s ease-out;
+}
+
+.secret-post-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #c94fcf, #ff69b4, #c94fcf);
+  animation: shimmer 2s infinite;
+}
+
+.secret-post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.secret-post-title {
+  color: #c94fcf;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(201, 79, 207, 0.3);
+}
+
+.secret-post-date {
+  color: #6c757d;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.secret-post-body {
+  margin-top: 15px;
+}
+
+.secret-post-content {
+  color: #495057;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: justify;
+  white-space: pre-wrap;
+}
+
+@keyframes secretPostAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Темная тема для секретных постов */
+[data-theme="dark"] .secret-post-card {
+  background: linear-gradient(135deg, #2a0036 0%, #3a0a3a 100%);
+  border-color: #b46cff;
+  box-shadow: 0 8px 32px rgba(180, 108, 255, 0.2);
+}
+
+[data-theme="dark"] .secret-post-card::before {
+  background: linear-gradient(90deg, #b46cff, #ff69b4, #b46cff);
+}
+
+[data-theme="dark"] .secret-post-header {
+  border-bottom-color: #4a0a4a;
+}
+
+[data-theme="dark"] .secret-post-title {
+  color: #b46cff;
+  text-shadow: 0 2px 4px rgba(180, 108, 255, 0.3);
+}
+
+[data-theme="dark"] .secret-post-date {
+  color: #d7baff;
+}
+
+[data-theme="dark"] .secret-post-content {
+  color: #e9ecef;
+}
+
 
 /* Кнопка "Открыть подарок" */
 #gift-open-btn {
@@ -1184,6 +1291,113 @@ body {
 }
 [data-theme="dark"] .site-footer .footer-sign {
   color: #ffb6e6;
+}
+
+/* Стили для секретных постов */
+.secret-post-card {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 15px;
+  padding: 25px;
+  margin: 20px 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 2px solid #c94fcf;
+  position: relative;
+  overflow: hidden;
+  animation: secretPostAppear 0.6s ease-out;
+}
+
+.secret-post-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #c94fcf, #ff69b4, #c94fcf);
+  animation: shimmer 2s infinite;
+}
+
+.secret-post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.secret-post-title {
+  color: #c94fcf;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(201, 79, 207, 0.3);
+}
+
+.secret-post-date {
+  color: #6c757d;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.secret-post-body {
+  margin-top: 15px;
+}
+
+.secret-post-content {
+  color: #495057;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: justify;
+  white-space: pre-wrap;
+}
+
+@keyframes secretPostAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Темная тема для секретных постов */
+[data-theme="dark"] .secret-post-card {
+  background: linear-gradient(135deg, #2a0036 0%, #3a0a3a 100%);
+  border-color: #b46cff;
+  box-shadow: 0 8px 32px rgba(180, 108, 255, 0.2);
+}
+
+[data-theme="dark"] .secret-post-card::before {
+  background: linear-gradient(90deg, #b46cff, #ff69b4, #b46cff);
+}
+
+[data-theme="dark"] .secret-post-header {
+  border-bottom-color: #4a0a4a;
+}
+
+[data-theme="dark"] .secret-post-title {
+  color: #b46cff;
+  text-shadow: 0 2px 4px rgba(180, 108, 255, 0.3);
+}
+
+[data-theme="dark"] .secret-post-date {
+  color: #d7baff;
+}
+
+[data-theme="dark"] .secret-post-content {
+  color: #e9ecef;
 }
 
 /* Надпись над коробочкой */

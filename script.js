@@ -138,7 +138,7 @@ updateDayCounter()
 const chatMessages = document.getElementById("chat-messages");
 const typingIndicator = document.getElementById("typing-indicator");
 
-const messages = [
+let messages = [
   "Привет, любовь моя ❤️",
   "Знаешь, я хотел бы начать этот сайт с чего-то простого, но настоящего",
   "Ты — причина, по которой я улыбаюсь без причины 🥺",
@@ -156,6 +156,87 @@ const messages = [
 
 
 let chatStarted = false;
+
+// Load chat messages from API
+async function loadChatMessages() {
+  try {
+    const response = await fetch('/api/chat-messages');
+    const apiMessages = await response.json();
+    if (apiMessages && apiMessages.length > 0) {
+      messages = apiMessages.map(msg => msg.message);
+    }
+  } catch (error) {
+    console.log('Using default chat messages');
+  }
+}
+
+// Load timeline posts from API
+async function loadTimelinePosts() {
+  try {
+    const response = await fetch('/api/posts');
+    const posts = await response.json();
+    
+    const container = document.getElementById('timeline-container');
+    container.innerHTML = '';
+    
+    if (posts && posts.length > 0) {
+      posts.forEach((post, index) => {
+        const timelineItem = createTimelineItem(post, index);
+        container.appendChild(timelineItem);
+      });
+      
+      // Re-initialize intersection observer for new items
+      initializeTimelineObserver();
+    } else {
+      container.innerHTML = '<div style="text-align: center; padding: 40px; color: #666;">Пока нет воспоминаний...</div>';
+    }
+  } catch (error) {
+    console.error('Error loading timeline posts:', error);
+    const container = document.getElementById('timeline-container');
+    container.innerHTML = '<div style="text-align: center; padding: 40px; color: #dc3545;">Ошибка загрузки воспоминаний</div>';
+  }
+}
+
+// Create timeline item element
+function createTimelineItem(post, index) {
+  const timelineItem = document.createElement('div');
+  timelineItem.className = 'timeline-item';
+  
+  // Generate alt text for image if not provided
+  const altText = post.image_url ? `Воспоминание от ${post.date}` : '';
+  
+  timelineItem.innerHTML = `
+    <div class="timeline-date">${post.date}</div>
+    <div class="timeline-dot"></div>
+    <div class="moment-popup">
+      ${post.image_url ? `
+        <div class="moment-popup-img-wrap">
+          <img src="${post.image_url}" alt="${altText}">
+        </div>
+      ` : ''}
+      <p>${post.content}</p>
+    </div>
+  `;
+  
+  return timelineItem;
+}
+
+// Initialize intersection observer for timeline items
+function initializeTimelineObserver() {
+  const timelineItems = document.querySelectorAll('.timeline-item');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  timelineItems.forEach(item => observer.observe(item));
+}
 
 function showTyping(message, callback) {
   typingIndicator.style.display = "block";
@@ -196,6 +277,10 @@ function isInViewport(el) {
   );
 }
 
+// Load content when page loads
+loadChatMessages();
+loadTimelinePosts();
+
 document.addEventListener("scroll", () => {
   const chatSection = document.getElementById("chat-section");
   if (isInViewport(chatSection)) {
@@ -205,19 +290,7 @@ document.addEventListener("scroll", () => {
 
 
 
-  const timelineItems = document.querySelectorAll('.timeline-item');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, {
-    threshold: 0.1
-  });
-
-  timelineItems.forEach(item => observer.observe(item));
+// Timeline observer is now initialized in loadTimelinePosts()
 
 
 
@@ -527,21 +600,131 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-document.getElementById('submit-password').onclick = function() {
+// Load site settings
+async function loadSiteSettings() {
+  try {
+    const response = await fetch('/api/settings');
+    const settings = await response.json();
+    
+    // Update site title and subtitle
+    const titleElement = document.querySelector('#hero h1');
+    const subtitleElement = document.querySelector('#hero p');
+    
+    if (titleElement && settings.site_title) {
+      titleElement.textContent = settings.site_title;
+    }
+    if (subtitleElement && settings.site_subtitle) {
+      subtitleElement.textContent = settings.site_subtitle;
+    }
+  } catch (error) {
+    console.log('Using default site settings');
+  }
+}
+
+// Load site settings when page loads
+loadSiteSettings();
+
+// Пасхалки для любопытных
+function addEasterEggs() {
+  // Сообщение в консоль
+  console.log('%c🔍 Ты попал в секретку, но настоящего контента тут нет 🙃', 'color: #c94fcf; font-size: 16px; font-weight: bold;');
+  console.log('%cВесь секретный контент хранится на сервере и загружается только с правильным паролем!', 'color: #666; font-size: 12px;');
+  
+  // Скрытый фейковый контент для тех, кто смотрит исходный код
+  const fakeContent = document.getElementById('fake-secret-content');
+  if (fakeContent) {
+    // Показываем фейковый контент только если кто-то пытается его найти
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+          const target = mutation.target;
+          if (target.id === 'fake-secret-content' && target.style.display !== 'none') {
+            console.log('%c🎭 Ага! Ты пытаешься подсмотреть фейковый контент!', 'color: #ff69b4; font-size: 14px; font-weight: bold;');
+            console.log('%cНастоящие секреты защищены паролем и загружаются с сервера!', 'color: #666; font-size: 12px;');
+          }
+        }
+      });
+    });
+    
+    observer.observe(fakeContent, { attributes: true, attributeFilter: ['style'] });
+  }
+  
+  // Дополнительные пасхалки при попытке инспектировать элементы
+  document.addEventListener('keydown', (e) => {
+    // F12 или Ctrl+Shift+I
+    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+      setTimeout(() => {
+        console.log('%c🕵️ О, ты открыл DevTools! Умно!', 'color: #c94fcf; font-size: 14px; font-weight: bold;');
+        console.log('%cНо секреты всё равно защищены паролем на сервере 😎', 'color: #666; font-size: 12px;');
+      }, 1000);
+    }
+  });
+  
+  // Пасхалка при попытке сохранить страницу
+  window.addEventListener('beforeunload', () => {
+    console.log('%c💾 Сохраняешь страницу? Секреты всё равно не сохранятся!', 'color: #ff69b4; font-size: 12px;');
+  });
+}
+
+// Инициализируем пасхалки
+addEasterEggs();
+
+// Secret post functionality
+document.getElementById('submit-password').onclick = async function() {
   const password = document.getElementById('gift-password').value;
-  const msg1 = document.getElementById('gift-message');
-  const msg2 = document.getElementById('gift-message-2');
+  const secretContent = document.getElementById('secret-content');
+  const secretTitle = document.getElementById('secret-title');
+  const secretMessage = document.getElementById('secret-message');
   const error = document.getElementById('error-message');
-  msg1.style.display = 'none';
-  msg2.style.display = 'none';
+  
+  // Hide all content
+  secretContent.style.display = 'none';
   error.style.display = 'none';
 
-  if (password === 'сучка') {
-    msg1.style.display = 'block';
-  } else if (password === 'любоф') {
-    msg2.style.display = 'block';
-  } else {
-    error.textContent = 'Неверный пароль!';
+  if (!password.trim()) {
+    error.textContent = 'Введите пароль!';
+    error.style.display = 'block';
+    return;
+  }
+
+  try {
+    // Check password and get content
+    const response = await fetch('/api/secret-posts/content', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ password: password.trim() })
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      secretTitle.textContent = data.title;
+      secretMessage.textContent = data.content;
+      
+      // Format date
+      const secretDate = document.getElementById('secret-date');
+      if (data.created_at) {
+        const date = new Date(data.created_at);
+        secretDate.textContent = date.toLocaleDateString('ru-RU', {
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric'
+        });
+      }
+      
+      secretContent.style.display = 'block';
+      
+      // Clear password field
+      document.getElementById('gift-password').value = '';
+    } else {
+      const errorData = await response.json();
+      error.textContent = errorData.error || 'Неверный пароль!';
+      error.style.display = 'block';
+    }
+  } catch (error) {
+    console.error('Error loading secret post:', error);
+    error.textContent = 'Ошибка загрузки секретного поста';
     error.style.display = 'block';
   }
 };

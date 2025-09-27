@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель - Love Site</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #764ba2;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+        }
+
+        .login-form {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 400px;
+            margin: 100px auto;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #764ba2;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #764ba2;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: transform 0.2s;
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 14px;
+            width: auto;
+        }
+
+        .admin-content {
+            display: none;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 12px 20px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s;
+            color: white;
+            font-weight: 500;
+        }
+
+        .tab.active {
+            background: rgba(255, 255, 255, 0.9);
+            color: #764ba2;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            margin-bottom: 20px;
+            color: #764ba2;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+        .item-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .item {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .item-title {
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .item-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .item-content {
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+
+        .item-meta {
+            font-size: 12px;
+            color: #adb5bd;
+        }
+
+        .password-display {
+            background: #e9ecef;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #6c757d;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .item-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .item-actions {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Login Form -->
+        <div id="loginForm" class="login-form">
+            <h2>🔐 Вход в админ-панель</h2>
+            <form id="loginFormElement">
+                <div class="form-group">
+                    <label for="username">Имя пользователя:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn">Войти</button>
+            </form>
+            <div id="loginError" class="error" style="display: none;"></div>
+        </div>
+
+        <!-- Admin Content -->
+        <div id="adminContent" class="admin-content">
+            <div class="header">
+                <h1>💕 Админ-панель Love Site</h1>
+                <p>Управление контентом сайта</p>
+                <button id="logoutBtn" class="btn btn-secondary" style="margin-top: 15px; width: auto;">Выйти</button>
+            </div>
+
+            <div class="tabs">
+                <div class="tab active" data-tab="secret">Секретные посты</div>
+                <div class="tab" data-tab="timeline">Таймлайн</div>
+                <div class="tab" data-tab="chat">Чат</div>
+                <div class="tab" data-tab="settings">Настройки</div>
+            </div>
+
+            <!-- Secret Posts Tab -->
+            <div id="secretTab" class="tab-content active">
+                <div class="card">
+                    <h3>Добавить секретный пост</h3>
+                    <form id="secretPostForm">
+                        <div class="form-group">
+                            <label for="secretTitle">Заголовок:</label>
+                            <input type="text" id="secretTitle" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="secretPassword">Пароль для доступа:</label>
+                            <input type="text" id="secretPassword" name="password" required placeholder="Например: любовь2025">
+                        </div>
+                        <div class="form-group">
+                            <label for="secretContent">Содержание:</label>
+                            <textarea id="secretContent" name="content" rows="6" required style="width: 100%; padding: 12px; border: 2px solid #e1e5e9; border-radius: 8px; font-size: 16px; font-family: inherit;"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Добавить секретный пост</button>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h3>Список секретных постов</h3>
+                    <div id="secretPostsList" class="item-list">
+                        <div class="loading">Загрузка...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline Tab -->
+            <div id="timelineTab" class="tab-content">
+                <div class="card">
+                    <h3>Добавить пост в таймлайн</h3>
+                    <form id="postForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="postDate">Дата (ДД.ММ.ГГГГ):</label>
+                                <input type="text" id="postDate" name="date" placeholder="03.05.2025" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="postImage">URL изображения:</label>
+                                <input type="text" id="postImage" name="image_url" placeholder="images/moment1.jpg">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="postContent">Содержание:</label>
+                            <textarea id="postContent" name="content" rows="3" required style="width: 100%; padding: 12px; border: 2px solid #e1e5e9; border-radius: 8px; font-size: 16px; font-family: inherit;"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Добавить пост</button>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h3>Список постов таймлайна</h3>
+                    <div id="postsList" class="item-list">
+                        <div class="loading">Загрузка...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Tab -->
+            <div id="chatTab" class="tab-content">
+                <div class="card">
+                    <h3>Сообщения чата</h3>
+                    <p style="color: #6c757d; margin-bottom: 20px;">Редактируйте сообщения, которые появляются в чате на главной странице</p>
+                    <form id="chatForm">
+                        <div id="chatMessagesContainer">
+                            <!-- Messages will be added here dynamically -->
+                        </div>
+                        <button type="button" id="addMessageBtn" class="btn btn-secondary" style="width: auto; margin-top: 15px;">+ Добавить сообщение</button>
+                        <button type="submit" class="btn" style="margin-top: 15px;">Сохранить все сообщения</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div id="settingsTab" class="tab-content">
+                <div class="card">
+                    <h3>Настройки сайта</h3>
+                    <form id="settingsForm">
+                        <div class="form-group">
+                            <label for="siteTitle">Заголовок сайта:</label>
+                            <input type="text" id="siteTitle" name="site_title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="siteSubtitle">Подзаголовок сайта:</label>
+                            <input type="text" id="siteSubtitle" name="site_subtitle" required>
+                        </div>
+                        <button type="submit" class="btn">Сохранить настройки</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let authToken = localStorage.getItem('authToken');
+        let currentEditingId = null;
+
+        // Check if user is already logged in
+        if (authToken) {
+            showAdminContent();
+        }
+
+        // Login form
+        document.getElementById('loginFormElement').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            try {
+                const response = await fetch('/api/admin/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    authToken = data.token;
+                    localStorage.setItem('authToken', authToken);
+                    showAdminContent();
+                } else {
+                    showError('loginError', data.error || 'Ошибка входа');
+                }
+            } catch (error) {
+                showError('loginError', 'Ошибка соединения с сервером');
+            }
+        });
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            authToken = null;
+            localStorage.removeItem('authToken');
+            showLoginForm();
+        });
+
+        // Tab switching
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+                
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab + 'Tab').classList.add('active');
+                
+                // Load data when switching tabs
+                if (tab.dataset.tab === 'secret') {
+                    loadSecretPosts();
+                } else if (tab.dataset.tab === 'timeline') {
+                    loadPosts();
+                } else if (tab.dataset.tab === 'chat') {
+                    loadChatMessages();
+                } else if (tab.dataset.tab === 'settings') {
+                    loadSettings();
+                }
+            });
+        });
+
+        // Secret post form
+        document.getElementById('secretPostForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = {
+                title: formData.get('title'),
+                content: formData.get('content'),
+                password: formData.get('password')
+            };
+            
+            try {
+                const url = currentEditingId ? `/api/admin/secret-posts/${currentEditingId}` : '/api/admin/secret-posts';
+                const method = currentEditingId ? 'PUT' : 'POST';
+                
+                const response = await fetch(url, {
+                    method,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    e.target.reset();
+                    currentEditingId = null;
+                    loadSecretPosts();
+                    showSuccess('Секретный пост сохранен!');
+                } else {
+                    const error = await response.json();
+                    showError('secretError', error.error || 'Ошибка сохранения');
+                }
+            } catch (error) {
+                showError('secretError', 'Ошибка соединения с сервером');
+            }
+        });
+
+        // Post form
+        document.getElementById('postForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = {
+                date: formData.get('date'),
+                image_url: formData.get('image_url'),
+                content: formData.get('content')
+            };
+            
+            try {
+                const url = currentEditingId ? `/api/admin/posts/${currentEditingId}` : '/api/admin/posts';
+                const method = currentEditingId ? 'PUT' : 'POST';
+                
+                const response = await fetch(url, {
+                    method,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    e.target.reset();
+                    currentEditingId = null;
+                    loadPosts();
+                    showSuccess('Пост сохранен!');
+                } else {
+                    const error = await response.json();
+                    showError('postError', error.error || 'Ошибка сохранения');
+                }
+            } catch (error) {
+                showError('postError', 'Ошибка соединения с сервером');
+            }
+        });
+
+        // Chat form
+        document.getElementById('chatForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const messages = Array.from(document.querySelectorAll('#chatMessagesContainer input')).map(input => input.value).filter(msg => msg.trim());
+            
+            try {
+                const response = await fetch('/api/admin/chat-messages', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify({ messages })
+                });
+                
+                if (response.ok) {
+                    showSuccess('Сообщения чата сохранены!');
+                } else {
+                    const error = await response.json();
+                    showError('chatError', error.error || 'Ошибка сохранения');
+                }
+            } catch (error) {
+                showError('chatError', 'Ошибка соединения с сервером');
+            }
+        });
+
+        // Settings form
+        document.getElementById('settingsForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = {
+                site_title: formData.get('site_title'),
+                site_subtitle: formData.get('site_subtitle')
+            };
+            
+            try {
+                const response = await fetch('/api/admin/settings', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    showSuccess('Настройки сохранены!');
+                } else {
+                    const error = await response.json();
+                    showError('settingsError', error.error || 'Ошибка сохранения');
+                }
+            } catch (error) {
+                showError('settingsError', 'Ошибка соединения с сервером');
+            }
+        });
+
+        // Add message button
+        document.getElementById('addMessageBtn').addEventListener('click', () => {
+            addMessageInput('');
+        });
+
+        // Helper functions
+        function showLoginForm() {
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('adminContent').style.display = 'none';
+        }
+
+        function showAdminContent() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('adminContent').style.display = 'block';
+            loadSecretPosts();
+        }
+
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            if (errorElement) {
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+                setTimeout(() => {
+                    errorElement.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        function showSuccess(message) {
+            const successDiv = document.createElement('div');
+            successDiv.className = 'success';
+            successDiv.textContent = message;
+            document.querySelector('.container').insertBefore(successDiv, document.querySelector('.header'));
+            setTimeout(() => {
+                successDiv.remove();
+            }, 3000);
+        }
+
+        async function loadSecretPosts() {
+            try {
+                const response = await fetch('/api/admin/secret-posts', {
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`
+                    }
+                });
+                const posts = await response.json();
+                
+                const container = document.getElementById('secretPostsList');
+                container.innerHTML = '';
+                
+                posts.forEach(post => {
+                    const div = document.createElement('div');
+                    div.className = 'item';
+                    div.innerHTML = `
+                        <div class="item-header">
+                            <div class="item-title">${post.title}</div>
+                            <div class="item-actions">
+                                <button class="btn btn-small" onclick="editSecretPost(${post.id})">Редактировать</button>
+                                <button class="btn btn-small btn-danger" onclick="deleteSecretPost(${post.id})">Удалить</button>
+                            </div>
+                        </div>
+                        <div class="item-content">Пароль: <span class="password-display">${post.password}</span></div>
+                        <div class="item-meta">Создано: ${new Date(post.created_at).toLocaleString()}</div>
+                    `;
+                    container.appendChild(div);
+                });
+            } catch (error) {
+                document.getElementById('secretPostsList').innerHTML = '<div class="error">Ошибка загрузки секретных постов</div>';
+            }
+        }
+
+        async function loadPosts() {
+            try {
+                const response = await fetch('/api/posts');
+                const posts = await response.json();
+                
+                const container = document.getElementById('postsList');
+                container.innerHTML = '';
+                
+                posts.forEach(post => {
+                    const div = document.createElement('div');
+                    div.className = 'item';
+                    div.innerHTML = `
+                        <div class="item-header">
+                            <div class="item-title">${post.date}</div>
+                            <div class="item-actions">
+                                <button class="btn btn-small" onclick="editPost(${post.id})">Редактировать</button>
+                                <button class="btn btn-small btn-danger" onclick="deletePost(${post.id})">Удалить</button>
+                            </div>
+                        </div>
+                        <div class="item-content">${post.content}</div>
+                        ${post.image_url ? `<div class="item-meta">Изображение: ${post.image_url}</div>` : ''}
+                        <div class="item-meta">Создано: ${new Date(post.created_at).toLocaleString()}</div>
+                    `;
+                    container.appendChild(div);
+                });
+            } catch (error) {
+                document.getElementById('postsList').innerHTML = '<div class="error">Ошибка загрузки постов</div>';
+            }
+        }
+
+        async function loadChatMessages() {
+            try {
+                const response = await fetch('/api/chat-messages');
+                const messages = await response.json();
+                
+                const container = document.getElementById('chatMessagesContainer');
+                container.innerHTML = '';
+                
+                messages.forEach((message, index) => {
+                    addMessageInput(message.message, index);
+                });
+            } catch (error) {
+                document.getElementById('chatMessagesContainer').innerHTML = '<div class="error">Ошибка загрузки сообщений</div>';
+            }
+        }
+
+        async function loadSettings() {
+            try {
+                const response = await fetch('/api/settings');
+                const settings = await response.json();
+                
+                document.getElementById('siteTitle').value = settings.site_title || '';
+                document.getElementById('siteSubtitle').value = settings.site_subtitle || '';
+            } catch (error) {
+                console.error('Error loading settings:', error);
+            }
+        }
+
+        function addMessageInput(value = '', index = null) {
+            const container = document.getElementById('chatMessagesContainer');
+            const div = document.createElement('div');
+            div.style.marginBottom = '10px';
+            div.innerHTML = `
+                <input type="text" value="${value}" placeholder="Введите сообщение..." style="width: calc(100% - 40px); padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                <button type="button" onclick="removeMessageInput(this)" style="padding: 8px 12px; background: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer;">×</button>
+            `;
+            container.appendChild(div);
+        }
+
+        function removeMessageInput(button) {
+            button.parentElement.remove();
+        }
+
+        async function editSecretPost(id) {
+            try {
+                const response = await fetch('/api/admin/secret-posts', {
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`
+                    }
+                });
+                const posts = await response.json();
+                const post = posts.find(p => p.id === id);
+                
+                if (post) {
+                    document.getElementById('secretTitle').value = post.title;
+                    document.getElementById('secretPassword').value = post.password;
+                    document.getElementById('secretContent').value = post.content;
+                    currentEditingId = id;
+                    document.getElementById('secretPostForm').scrollIntoView();
+                }
+            } catch (error) {
+                showError('secretError', 'Ошибка загрузки данных');
+            }
+        }
+
+        async function editPost(id) {
+            try {
+                const response = await fetch('/api/posts');
+                const posts = await response.json();
+                const post = posts.find(p => p.id === id);
+                
+                if (post) {
+                    document.getElementById('postDate').value = post.date;
+                    document.getElementById('postImage').value = post.image_url || '';
+                    document.getElementById('postContent').value = post.content;
+                    currentEditingId = id;
+                    document.getElementById('postForm').scrollIntoView();
+                }
+            } catch (error) {
+                showError('postError', 'Ошибка загрузки данных');
+            }
+        }
+
+        async function deleteSecretPost(id) {
+            if (confirm('Вы уверены, что хотите удалить этот секретный пост?')) {
+                try {
+                    const response = await fetch(`/api/admin/secret-posts/${id}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Authorization': `Bearer ${authToken}`
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        loadSecretPosts();
+                        showSuccess('Секретный пост удален!');
+                    } else {
+                        const error = await response.json();
+                        showError('secretError', error.error || 'Ошибка удаления');
+                    }
+                } catch (error) {
+                    showError('secretError', 'Ошибка соединения с сервером');
+                }
+            }
+        }
+
+        async function deletePost(id) {
+            if (confirm('Вы уверены, что хотите удалить этот пост?')) {
+                try {
+                    const response = await fetch(`/api/admin/posts/${id}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Authorization': `Bearer ${authToken}`
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        loadPosts();
+                        showSuccess('Пост удален!');
+                    } else {
+                        const error = await response.json();
+                        showError('postError', error.error || 'Ошибка удаления');
+                    }
+                } catch (error) {
+                    showError('postError', 'Ошибка соединения с сервером');
+                }
+            }
+        }
+
+        // Make functions global for onclick handlers
+        window.editSecretPost = editSecretPost;
+        window.editPost = editPost;
+        window.deleteSecretPost = deleteSecretPost;
+        window.deletePost = deletePost;
+        window.removeMessageInput = removeMessageInput;
+    </script>
+</body>
+</html>

@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Для тебя ❤️ — Коля и Ирина</title>
+  <title>Для тебя ❤️</title>
   <meta name="description" content="История любви Коли и Ирины. Подарок для любимой, воспоминания, моменты, признания и счастье вместе.">
   <meta name="keywords" content="Коля, Ирина, любовь, история, отношения, подарок, воспоминания, счастье, вместе">
   <meta name="google-site-verification" content="VAyR5wIZ5jF2FQoj0IufH2dHJn65FCZpFOhu2bN3VpU" />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script defer src="api-client.js"></script>
   <script defer src="script.js"></script>
 </head>
 <body>
@@ -51,186 +52,12 @@
 <!-- Галерея воспоминаний -->
 <section class="moments-timeline">
   <h2 class="timeline-title">📅 Наша история</h2>
-  <div class="timeline-container">
-    <!-- Момент  -->
-    <div class="timeline-item">
-      <div class="timeline-date">17.04.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment7-perviipodarok!!!!.jpg" alt="Торт с надписью для девушки, стоит на столе в домашней обстановке, вокруг мягкий свет, атмосфера радостная и волнительная, на торте написано: для тебя, настроение трогательное и немного застенчивое">
-        </div>
-        <p>всё началось с торта в Тг — первый подарок, первое «я хочу, чтобы ей было приятно»</p>
-      </div>
+  <div class="timeline-container" id="timeline-container">
+    <!-- Динамические посты будут загружены здесь -->
+    <div class="loading" style="text-align: center; padding: 40px; color: #666;">
+      Загрузка воспоминаний...
     </div>
-    <!-- Момент 1 -->
-    <div class="timeline-item">
-      <div class="timeline-date">30.04.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment1.jpg" alt="Два человека стоят рядом на улице, держатся за руки, вокруг вечерний городской пейзаж, свет фонарей отражается на мокром асфальте, атмосфера спокойная и немного загадочная, лица не полностью видны, настроение ожидания и лёгкого волнения">
-        </div>
-        <p>никто ещё не знал, а уже всё началось</p>
-      </div>
-    </div>
-    <!-- Момент 2 -->
-    <div class="timeline-item">
-      <div class="timeline-date">01.05.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment20-pikmikolya.jpg" alt="Два человека делают селфи, улыбаются и смотрят в камеру, на заднем плане домашняя обстановка, атмосфера радостная и уютная, лица близко друг к другу, настроение счастливое и тёплое">
-        </div>
-        <p>мы просто гуляли, просто играли с тренд… а потом всё стало не «просто»</p>
-      </div>
-    </div>
-    <!-- Добавь свои дальше -->
-     <!-- Момент 3 -->
-     <div class="timeline-item">
-      <div class="timeline-date">03.05.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment17-glaza.jpg" alt="Девушка смотрит прямо в камеру, крупный план её глаз, взгляд открытый и немного застенчивый, вокруг мягкий свет и домашняя атмосфера, настроение трогательное и искреннее">
-        </div>
-        <p>эти глаза я помню с первого взгляда, даже когда ещё не знал, что запомню🫠</p>
-      </div>
-    </div>
-<!-- Момент 4 -->
-    <div class="timeline-item">
-      <div class="timeline-date">03.05.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment10-vstrechata.jpg" alt="Два человека держатся за руки в вечернее время, на фоне городские огни и лёгкая неоновая подсветка, атмосфера романтичная и волнительная, момент первого признания, настроение трепетное и искреннее">
-        </div>
-        <p>тогда, в 22:45, я не просто предложил встречаться… я, по сути, выбрал тебя навсегда</p>
-      </div>
-    </div>
-<!-- Момент 5 -->
-    <div class="timeline-item">
-      <div class="timeline-date">07.05.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment9-pervoepriznanie.jpg" alt="Девушка улыбается, смотрит в камеру с лёгким волнением и радостью, на фоне домашняя обстановка, атмосфера искренняя и тёплая, момент признания в чувствах, настроение трогательное и немного волнительное">
-        </div>
-        <p>первый раз, когда ты открылась по-настоящему... и всё стало ещё теплее внутри</p>
-      </div>
-    </div>
-<!-- Момент 6 -->
-    <div class="timeline-item">
-      <div class="timeline-date">07.05.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment6-ily.jpg" alt="Девушка улыбается, лежит на подушке, лицо расслабленное и счастливое, вокруг мягкий свет и уютная домашняя атмосфера, настроение тёплое и спокойное">
-        </div>
-        <p>твоё первое «доброе утро»… с него начался каждый мой день, где ты — первая мысль</p>
-      </div>
-    </div>
-<!-- Момент 7 -->
-    <div class="timeline-item">
-      <div class="timeline-date">09.05.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment4.jpg" alt="Девушка улыбается и смотрит в камеру, на фоне уютная домашняя обстановка, выражение лица тёплое и немного задумчивое, атмосфера доверительная и нежная">
-        </div>
-        <p>ты сказала, что я — как никто другой, и что страшно… тогда и мне стало страшно — потерять тебя</p>
-      </div>
-    </div>
-<!-- Момент 8 -->
-    <div class="timeline-item">
-      <div class="timeline-date">12.05.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment12-sisi.jpg" alt="Девушка сидит у озера на фоне спокойной воды и зелёных деревьев, смотрит вдаль с лёгкой улыбкой, вокруг солнечный день и тёплая атмосфера уединения, настроение умиротворённое и нежное">
-        </div>
-        <p>тот самый день у озера... солнце, тишина, ты, я… и что-то очень тёплое и мягкое (не вода 😌)</p>
-      </div>
-    </div>
-<!-- Момент 9 -->
-    <div class="timeline-item">
-      <div class="timeline-date">13.05.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment11-prikolina.jpg" alt="Девушка высовывает язык, улыбается и смотрит в камеру, вокруг домашняя обстановка, настроение игривое и тёплое, создаётся ощущение близости и весёлого момента">
-        </div>
-        <p>язык любви — это не румынский, не русский… это вот эта хуйня🙄</p>
-      </div>
-    </div>
-<!-- Момент 10 -->
-    <div class="timeline-item">
-      <div class="timeline-date">25.05.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment8-parniee avi.jpg" alt="Два аватарных изображения с изображением пары, аватары расположены рядом и словно целуются, фон светлый и нейтральный, создаётся ощущение нежности и игривости, визуальный акцент на близости и романтике">
-        </div>
-        <p>наши авы целуются чаще, чем мы — но мы их догоним, честно 😘</p>
-      </div>
-    </div>
-<!-- Момент 11 -->
-    <div class="timeline-item">
-      <div class="timeline-date">30.05.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment16-pikmi.jpg" alt="Два человека делают селфи, оба улыбаются и смотрят в камеру, на заднем плане домашняя обстановка, атмосфера радостная и тёплая, лица близко друг к другу, выражение счастья и уюта">
-        </div>
-        <p>впервые мы сами нажали на "сделать фото" — с этого момента начался наш альбом)))</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">31.05.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment18-mi.jpg" alt="Два человека делают селфи, оба улыбаются и смотрят в камеру, на заднем плане домашняя обстановка, атмосфера радостная и тёплая, лица близко друг к другу, выражение счастья и уюта">
-        </div>
-        <p>уже не одна, а пачка — потому что «давай ещё», «а вот так», «подожди, щас смешно будет»</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">11.06.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment19-sex.png" alt="Два человека в интимной и нежной обстановке, обнимаются в мягком свете, выражая близость и заботу, атмосфера тёплая и наполнена любовью">
-        </div>
-        <p>да, это та самая фотка 👀</p>
-      </div>
-    </div>
- 
-
-<div class="timeline-item">
-      <div class="timeline-date">11.06.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment13-frantsuzkii.jpg" alt="Два человека сидят рядом за столом, один улыбается и смотрит на другого, на столе тетради и учебник французского, вокруг домашняя уютная атмосфера, настроение тёплое и немного озорное, на тетради написано: французский язык">
-        </div>
-        <p>всё началось с "что задали по французскому?", а закончилось... ну, ты знаешь 😏 ебаный французский, спасибо тебе, блять</p>
-      </div>
-    </div>
-  
-
-<div class="timeline-item">
-      <div class="timeline-date">11.06.2025</div>
-      <div class="timeline-dot"></div>
-      <div class="moment-popup">
-        <div class="moment-popup-img-wrap">
-          <img src="images/moment21-yazik.jpg" alt="A person playfully sticking out their tongue in a lighthearted moment, surrounded by a cozy indoor setting, conveying a fun and affectionate mood">
-        </div>
-        <p>эта фотка у меня вызывает жажду жизни и не только… ты там такая мммм, аж зависнуть можно 🥵</p>
-      </div>
-    </div>
-  
-
+  </div>
 </section>
 
   
@@ -260,12 +87,41 @@
 
 
   <!-- Секретный раздел с паролем -->
-<button id="gift-open-btn">Открыть🙄</button>
+<button id="gift-open-btn">Открыть секретный раздел🙄</button>
 
 <div id="password-container" style="display:none; margin-top: 20px;">
-  <input id="gift-password" type="password" placeholder="Вводи пупс💋" />
-  <button id="submit-password">Оке🎀</button>
+  <input id="gift-password" type="password" placeholder="Введите пароль для секретного поста" />
+  <button id="submit-password">Открыть</button>
   <div id="error-message" style="color: red; margin-top: 5px; display:none;"></div>
+</div>
+
+<div id="secret-content" style="display:none; margin-top: 20px;">
+  <div class="secret-post-card">
+    <div class="secret-post-header">
+      <h3 id="secret-title" class="secret-post-title"></h3>
+      <div class="secret-post-date" id="secret-date"></div>
+    </div>
+    <div class="secret-post-body">
+      <div id="secret-message" class="secret-post-content"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Пасхалки для любопытных -->
+<!-- Тут ничего нет, весь контент на сервере 😎 -->
+<div id="fake-secret-content" style="display: none;">
+  <div class="secret-post-card">
+    <div class="secret-post-header">
+      <h3 class="secret-post-title">Фейковый секрет</h3>
+      <div class="secret-post-date">01.01.2025</div>
+    </div>
+    <div class="secret-post-body">
+      <div class="secret-post-content">
+        Это фейковый контент для тех, кто пытается подсмотреть через исходный код. 
+        Настоящие секреты хранятся на сервере и загружаются только с правильным паролем! 🔒
+      </div>
+    </div>
+  </div>
 </div>
 
 <div id="gift-message" style="display:none; margin-top: 20px; font-size: 1.2rem; color: #c94fcf;">
@@ -383,6 +239,7 @@
     <span class="footer-heart" aria-hidden="true">💜</span>
     <span class="footer-love">Сделано с любовью для самой любимой 💖</span>
     <span class="footer-date">&copy; 2025 — <span style="color:#b46cff;">LoveStory</span></span>
+    <a href="/admin" style="color: #b46cff; text-decoration: none; margin-left: 20px; font-size: 12px;">🔧 Админ</a>
   </div>
 </footer>
 </body>
